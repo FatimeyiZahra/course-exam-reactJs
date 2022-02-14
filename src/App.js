@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
+import "./index.css";
+import { Layout, Menu } from "antd";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+  DesktopOutlined,
+  PieChartOutlined,
+  TeamOutlined,
+  FileOutlined,
+} from "@ant-design/icons";
+import DashboardLayout from "./app/layout/DashboardLayout";
+import Sfsd from "./sfsd";
+const { SubMenu } = Menu;
+const { Header, Sider, Content } = Layout;
 function App() {
+  const [collapsed, setState] = useState(false);
+  const toggle = () => {
+    setState(!collapsed);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DashboardLayout>
+      <Sfsd />
+    </DashboardLayout>
   );
 }
 
