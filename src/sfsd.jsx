@@ -2,8 +2,8 @@ import React from 'react'
 
 const Sfsd = () => {
   return (
-    <div
-    className="site-layout-background"
+    <div  
+    className="site-layout-background card"
     style={{ padding: 24, textAlign: "center" }}
   >
     ...

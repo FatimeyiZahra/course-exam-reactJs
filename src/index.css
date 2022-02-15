@@ -1,3 +1,6 @@
+.mr-10 {
+  margin-right: 10px;
+}
 .logo {
   height: 32px;
   margin: 16px;
@@ -8,7 +11,7 @@
   background: #fff;
 }
 
-.site-layout{
+.site-layout {
   background: #fff;
 }
 .site-layout-background {
@@ -28,7 +31,106 @@
 .header-navbar.navbar-shadow {
   box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
 }
+.header-navbar.floating-nav {
+  position: fixed;
+  transition: 300ms ease all !important;
+  right: 30px;
+  margin: 1.3rem auto 0;
+  width: calc(100vw - (100vw - 100%) - calc(2rem * 2) - 273px);
+  border-radius: 0.428rem;
+  z-index: 12;
+}
+.header-navbar {
+  transition: 300ms ease all !important;
+  position: fixed;
+  right: 30px;
+  margin: 1.3rem auto 0;
+  width: calc(100vw - (100vw - 100%) - 4.4rem - 74px);
+  border-radius: 0.428rem;
+  z-index: 12;
+}
 .card {
   margin-bottom: 2rem;
   box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+}
+/* .ant-dropdown {
+  top: 80px !important;
+  left: 1385px !important;
+} */
+/* .content.app-content {
+  padding: calc(2rem + 2.45rem + 1.3rem) 2rem 0;
+} */
+.ant-layout-header {
+  padding: 0 !important;
+  z-index: 99 !important;
+}
+.content {
+  position: relative;
+  transition: 300ms ease all !important;
+  backface-visibility: hidden;
+  min-height: calc(100% - 3.35rem);
+}
+.collapsedStyle.content.app-content {
+  overflow: "initial";
+  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
+  margin-left: 80px;
+}
+.uncollapsedStyle {
+  margin-left: 276px;
+  transition: 300ms ease all !important;
+  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
+}
+.user-name {
+  color: #6e6b7b;
+}
+.fw-bolder {
+  font-weight: bold !important;
+}
+@media (max-width: 1201px) {
+  .header-navbar.fixed-top,
+  .header-navbar {
+    left: 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .header-navbar {
+    width: calc(100vw - (100vw - 100%) - calc(3rem + 0.4rem)) !important;
+    /* margin-left: calc(2rem - 0.8rem);
+    margin-right: calc(2rem - 0.8rem); */
+    right: 0 !important;
+  }
+}
+@media (max-width: 1199.98px) {
+  /* .header-navbar {
+    width: calc(100vw - (100vw - 100%) - calc(2rem * 2));
+  } */
+}
+@media (max-width: 767.98px) {
+  .main-menu.hide {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: width 0.25s, opacity 0.25s, transform 0.25s;
+    width: 260px;
+    left: -260px;
+  }
+  
+  .content {
+    margin-left: 0 !important;
+  }
+  .main-menu {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    transition: width 0.25s, opacity 0.25s, transform 0.25s;
+    width: 260px;
+    left: -260px !important;
+    z-index: 999;
+  }
+  .main-menu.menu-open {
+    opacity: 1;
+    transform: translate3d(260px, 0, 0);
+    transition: width 0.25s, opacity 0.25s, transform 0.25s;
+  }
+  .header-navbar {
+    margin: 1.3rem auto 0;
+  }
 }

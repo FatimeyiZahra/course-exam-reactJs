@@ -19,6 +19,7 @@ import {
   DropdownToggle,
   DropdownItem,
 } from "reactstrap";
+import { UserOutlined } from '@ant-design/icons';
 import defaultAvatar from "../../../assets/image/avatar/avatar-s-11.jpg";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
@@ -47,19 +48,17 @@ const UserDropdown = () => {
     </Menu>
   );
   return (
-    <>
       <Dropdown overlay={menu} trigger={["click"]}>
-        <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-          <span className="user-name fw-bold">
+        <a className="ant-dropdown-link mr-10" onClick={(e) => e.preventDefault()}>
+          <span className="user-name fw-bolder mr-10">
             {(userData && userData["username"]) || "John Doe"}
           </span>
           {/* <span className="user-status">
             {(userData && userData.role) || "Admin"}
           </span>{" "} */}
-          <Avatar src={userAvatar} /> <DownOutlined />
+          <Avatar size="large"  src={userAvatar} /> 
         </a>
       </Dropdown>
-    </>
     // <UncontrolledDropdown tag='li' className='dropdown-user nav-item'>
     //   <DropdownToggle href='/' tag='a' className='nav-link dropdown-user-link' onClick={e => e.preventDefault()}>
     //     <div className='user-nav d-sm-flex d-none'>
