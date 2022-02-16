@@ -1,30 +1,27 @@
 import React, { useRef, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./index.css";
-import { Layout, Menu } from "antd";
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  DesktopOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  FileOutlined,
-} from "@ant-design/icons";
+
 import DashboardLayout from "./app/layout/DashboardLayout";
 import Sfsd from "./sfsd";
-const { SubMenu } = Menu;
-const { Header, Sider, Content } = Layout;
+import SignIn from "./app/pages/signIn/SignIn";
+
 function App() {
-  const [collapsed, setState] = useState(false);
-  const toggle = () => {
-    setState(!collapsed);
-  };
   return (
-    <DashboardLayout>
-      <Sfsd />
-    </DashboardLayout>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <SignIn />
+        </Route>
+        <DashboardLayout>
+          <Route exact path="/home">
+             <Sfsd />
+          </Route>
+         
+        </DashboardLayout>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
