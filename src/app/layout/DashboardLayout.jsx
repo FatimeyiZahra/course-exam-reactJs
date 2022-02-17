@@ -1,23 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, {useState } from "react";
+import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import "../../index.css";
-import { Layout, Menu } from "antd";
-import { Row, Col, Divider } from "antd";
+import { Layout } from "antd";
+import { Row, Col } from "antd";
 import logo from "../../assets/image/logo/logo.svg"
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  UserOutlined,
-  DesktopOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  FileOutlined,
   CloseOutlined
 } from "@ant-design/icons";
-import DashboardSider from "./sider/DashboardSider";
 import UserDropdown from "./userDropdown/UserDropdown";
-const { SubMenu } = Menu;
+import SideBarMenuItem from "./menuItem/SideBarMenuItem";
 const { Header, Sider, Content } = Layout;
 
 const DashboardLayout = ({ children }) => {
@@ -33,7 +27,6 @@ const DashboardLayout = ({ children }) => {
   // };
   return (
     <Layout>
-      {/* <DashboardSider/> */}
       <Sider
         theme="light"
         trigger={null}
@@ -62,7 +55,9 @@ const DashboardLayout = ({ children }) => {
         <div className="sidebar-header">
           <ul>
             <li className="nav-item me-auto">
-               <div className="logo" ><img src={logo} alt="" /></div>
+            <Link to="/home"> 
+              <div className="logo" ><img src={logo} alt="" /></div>
+            </Link>
             </li>
             <li className="nav-item">
              <div className="nav-toggle">
@@ -71,29 +66,8 @@ const DashboardLayout = ({ children }) => {
            </li>
           </ul>
         </div>
-    
         
-        <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline">
-        
-          <Menu.Item key="1" icon={<PieChartOutlined style={{ fontSize: "20px" }}/>} style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e" }}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined style={{ fontSize: "20px" }}/>} style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e" }}>
-            Option 2
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined style={{ fontSize: "20px" }}/>} title="User" style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e"  }}> 
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined style={{ fontSize: "20px"}}/>} title="Team" style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e"  }}>
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined  style={{ fontSize: "20px",margin: "0px 6px 0px 0px"}}/>} style={{ fontWeight:"400",fontSize: "1.1rem " ,color:"#625f6e" }}>
-            Files
-          </Menu.Item>
-        </Menu>
+        <SideBarMenuItem/>
       </Sider>
       <Layout className="site-layout">
         <Header

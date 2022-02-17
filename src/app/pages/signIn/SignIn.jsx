@@ -1,28 +1,39 @@
-import React, { useRef } from "react";
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import signInFoto from "../../../assets/image/background/signIn.svg"
+import React, { useEffect, useRef, useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+// import signInFoto from "../../../assets/image/background/signIn.svg";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -30,26 +41,59 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const emailRef=useRef();
+  const emailRef = useRef();
   const PasswordRef = useRef();
+  const [emailCheck, setEmailCheck] = useState({
+    helperText: "",
+    error: false,
+  });
+  const [passwordCheck, setPasswordCheck] = useState({
+    helperText: "",
+    error: false,
+  });
+  const [values, setValues] = React.useState({
+    amount: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+  useEffect(() => {}, []);
+
   const handleSubmit = (event) => {
+    if (emailRef.current.value === "") {
+      setEmailCheck({ helperText: "mail bos ola bilemez", error: true });
+    } else {
+      setEmailCheck({ helperText: "", error: false });
+    }
+    if (PasswordRef.current.value === "") {
+      setPasswordCheck({
+        helperText: "sifre mail bos ola bilemez",
+        error: true,
+      });
+    } else {
+      setPasswordCheck({ helperText: "", error: false });
+    }
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-     const loginData = {
-        email: emailRef.current.value,
-        password: PasswordRef.current.value,
-     };
-    //  console.log({
-    //     email: data.get('email'),
-    //     password: data.get('password'),
-    //   });
-    console.log(loginData);
+
+    const loginData = {
+      email: emailRef.current.value,
+      password: PasswordRef.current.value,
+    };
+    if (emailRef.current.value !== "" && PasswordRef.current.value !== "") {
+      console.log(loginData);
+    } else {
+      console.log("xeta var");
+    }
   };
 
   return (
-     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -58,58 +102,113 @@ export default function SignIn() {
           md={8}
           sx={{
             //   'url(https://source.unsplash.com/random)'
-            backgroundImage:'url(http://localhost:3001/static/media/login-v2.2198399d.svg)',
-            backgroundRepeat: 'no-repeat',
+            backgroundImage:
+              "url(http://localhost:3000/static/media/signIn.2198399dbc4d74f02e45d6f593ce319f.svg)",
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'auto', //cover
-            backgroundPosition: 'center',
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "auto", //cover
+            backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={4} elevation={6} square="true" 
-         sx={{
-             
-              display: 'flex',
-              alignItems: 'center',
-            }}>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={4}
+          elevation={6}
+          square="true"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <Box
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
+            noValidate
+            autoComplete="off"
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
+            >
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="email outlined-error-helper-text"
                 label="Email Address"
                 name="email"
-                autoComplete="off"
+                // autoComplete="off"
                 autoFocus
+                error={emailCheck.error}
                 inputRef={emailRef}
+                helperText={emailCheck.helperText}
               />
-              <TextField
+              <FormControl fullWidth variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Password
+                </InputLabel>
+                <OutlinedInput
+                  id="password outlined-error-helper-text"
+                  type={values.showPassword ? "text" : "password"}
+                  // value={values.password}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                  inputRef={PasswordRef}
+                  error={passwordCheck.error}
+                  helpertext={passwordCheck.helperText}
+                />
+                {passwordCheck.helperText && (
+                  <FormHelperText error id="password">
+                    {passwordCheck.helperText}
+                  </FormHelperText>
+                )}
+              </FormControl>
+              {/* <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
-                id="password"
+                id="password outlined-error-helper-text"
                 inputRef={PasswordRef}
-                autoComplete="current-password"
-              />
+                error={passwordCheck.error}
+                // autoComplete="current-password"
+                helperText={passwordCheck.helperText}
+              /> */}
+
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
