@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.min.css'
 import "./index.css";
 
 import DashboardLayout from "./app/layout/DashboardLayout";
-import Sfsd from "./sfsd";
 import SignIn from "./app/pages/signIn/SignIn";
+import DashBoard from "./app/pages/dashboard/DashBoard";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         </Route>
         <DashboardLayout>
           <Route exact path="/home">
-             <Sfsd />
+             <DashBoard />
           </Route>
          
         </DashboardLayout>

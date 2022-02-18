@@ -1,0 +1,6 @@
+.site-statistic-demo-card {
+  padding: 30px;
+}
+[data-theme="dark"] .site-statistic-demo-card {
+  background: #303030;
+}

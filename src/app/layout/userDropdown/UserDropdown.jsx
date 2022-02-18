@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  User,
-  Mail,
-  CheckSquare,
-  MessageSquare,
-  Settings,
-  CreditCard,
-  HelpCircle,
-  Power,
-} from "react-feather";
-import { Avatar, Image } from "antd";
-import "antd/dist/antd.css";
+// import { Link } from "react-router-dom";
+// import {
+//   User,
+//   Mail,
+//   CheckSquare,
+//   MessageSquare,
+//   Settings,
+//   CreditCard,
+//   HelpCircle,
+//   Power,
+// } from "react-feather";
+import { Avatar} from "antd";
+import 'antd/dist/antd.min.css'
 // ** Reactstrap Imports
-import {
-  UncontrolledDropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
-} from "reactstrap";
-import { UserOutlined } from '@ant-design/icons';
+// import {
+//   UncontrolledDropdown,
+//   DropdownMenu,
+//   DropdownToggle,
+//   DropdownItem,
+// } from "reactstrap";
+// import { UserOutlined } from '@ant-design/icons';
 import defaultAvatar from "../../../assets/image/avatar/avatar-s-11.jpg";
 import { Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+// import { DownOutlined } from "@ant-design/icons";
 const UserDropdown = () => {
   const [userData] = useState(null);
 
@@ -49,7 +49,7 @@ const UserDropdown = () => {
   );
   return (
       <Dropdown overlay={menu} trigger={["click"]}>
-        <a className="ant-dropdown-link mr-10" onClick={(e) => e.preventDefault()}>
+        <a href="!#" className="ant-dropdown-link mr-10" onClick={(e) => e.preventDefault()}>
           <span className="user-name fw-bolder mr-10">
             {(userData && userData["username"]) || "John Doe"}
           </span>

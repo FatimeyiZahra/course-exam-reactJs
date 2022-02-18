@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import signInFoto from "../../../assets/image/background/signIn.svg";
+import signInFoto from "../../../assets/image/background/signIn.svg";
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -102,8 +102,7 @@ export default function SignIn() {
           md={8}
           sx={{
             //   'url(https://source.unsplash.com/random)'
-            backgroundImage:
-              "url(http://localhost:3000/static/media/signIn.2198399dbc4d74f02e45d6f593ce319f.svg)",
+            backgroundImage: 'url('+ signInFoto+')',
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
