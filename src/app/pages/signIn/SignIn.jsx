@@ -149,12 +149,12 @@ export default function SignIn() {
             >
               <TextField
                 margin="normal"
-                required
+                // required
                 fullWidth
                 id="email outlined-error-helper-text"
                 label="Email Address"
                 name="email"
-                // autoComplete="off"
+                autoComplete="off"
                 autoFocus
                 error={emailCheck.error}
                 inputRef={emailRef}

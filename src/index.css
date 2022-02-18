@@ -96,9 +96,9 @@
   top: 80px !important;
   left: 1385px !important;
 } */
-/* .content.app-content {
-  padding: calc(2rem + 2.45rem + 1.3rem) 2rem 0;
-} */
+.content.app-content {
+ padding: calc(2rem + 4.45rem + 2.3rem) 2rem 0;
+}
 .ant-layout-header {
   padding: 0 !important;
   z-index: 99 !important;
@@ -111,7 +111,7 @@
 }
 .collapsedStyle.content.app-content {
   overflow: "initial";
-  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
+  padding: calc(2rem + 4.45rem + 2.3rem) 2rem 0;
   margin-left: 80px;
 }
 .uncollapsedStyle {
