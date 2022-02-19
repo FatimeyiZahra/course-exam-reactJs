@@ -240,6 +240,9 @@ small,
 /* .card-browser-states .browser-states:not(:first-child) {
   margin-top: 1.7rem;
 } */
+.card-browser-states .browser-states:last-child {
+ padding-bottom: 0;
+}
 .list-group-item:first-child {
   border-top-width: 0;
 }
@@ -264,4 +267,28 @@ small,
 }
 .list-group-item:last-child {
   border-bottom-width: 0;
+}
+.badge {
+  display: inline-block;
+  padding: 0.33em 0.5em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  /* vertical-align: baseline; */
+  border-radius: 0.375rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.badge-status-orange  {
+  background-color: #fa8c16;
+}
+.badge-status-yellow {
+  background: #fadb14;
+}
+.d-none{
+  display: none;
+}
+.badge-status-red {
+  background: #f5222d;
 }

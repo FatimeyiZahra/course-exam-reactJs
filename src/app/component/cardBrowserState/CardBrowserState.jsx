@@ -1,5 +1,5 @@
 import "../cardTransactions/index.css"
-
+import { useState } from "react";
 // ** Reactstrap Imports
 import {
   Card,
@@ -10,222 +10,29 @@ import {
 
 } from 'reactstrap'
 
+
 const CardBrowserState = ({ trackBgColor }) => {
+  const [menuOpen, setMenu] = useState(false);
   const statesArr = [
     {
       title: 'Google Chrome',
       value: '54.4%',
-      chart: {
-        type: 'radialBar',
-        series: [54.4],
-        height: 30,
-        width: 30,
-        options: {
-          grid: {
-            show: false,
-            padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15
-            }
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '22%'
-              },
-              track: {
-                background: trackBgColor
-              },
-              dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false
-                },
-                value: {
-                  show: false
-                }
-              }
-            }
-          },
-          stroke: {
-            lineCap: 'round'
-          }
-        }
-      }
     },
     {
       title: 'Mozila Firefox',
       value: '6.1%',
-      chart: {
-        type: 'radialBar',
-        series: [6.1],
-        height: 30,
-        width: 30,
-        options: {
-          grid: {
-            show: false,
-            padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15
-            }
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '22%'
-              },
-              track: {
-                background: trackBgColor
-              },
-              dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false
-                },
-                value: {
-                  show: false
-                }
-              }
-            }
-          },
-          stroke: {
-            lineCap: 'round'
-          }
-        }
-      }
     },
     {
       title: 'Apple Safari',
       value: '14.6%',
-      chart: {
-        type: 'radialBar',
-        series: [14.6],
-        height: 30,
-        width: 30,
-        options: {
-          grid: {
-            show: false,
-            padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15
-            }
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '22%'
-              },
-              track: {
-                background: trackBgColor
-              },
-              dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false
-                },
-                value: {
-                  show: false
-                }
-              }
-            }
-          },
-          stroke: {
-            lineCap: 'round'
-          }
-        }
-      }
     },
     {
       title: 'Internet Explorer',
       value: '4.2%',
-      chart: {
-        type: 'radialBar',
-        series: [4.2],
-        height: 30,
-        width: 30,
-        options: {
-          grid: {
-            show: false,
-            padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15
-            }
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '22%'
-              },
-              track: {
-                background: trackBgColor
-              },
-              dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false
-                },
-                value: {
-                  show: false
-                }
-              }
-            }
-          },
-          stroke: {
-            lineCap: 'round'
-          }
-        }
-      }
     },
     {
       title: 'Opera Mini',
       value: '8.4%',
-      chart: {
-        type: 'radialBar',
-        series: [8.4],
-        height: 30,
-        width: 30,
-        options: {
-          grid: {
-            show: false,
-            padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15
-            }
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '22%'
-              },
-              track: {
-                background: trackBgColor
-              },
-              dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false
-                },
-                value: {
-                  show: false
-                }
-              }
-            }
-          },
-          stroke: {
-            lineCap: 'round'
-          }
-        }
-      }
     }
   ]
 
@@ -238,7 +45,6 @@ const CardBrowserState = ({ trackBgColor }) => {
           </div>
           <div className='d-flex align-items-center'>
             <div className='fw-bold text-body-heading me-1'>{state.value}</div>
-          
           </div>
         </div>
       )

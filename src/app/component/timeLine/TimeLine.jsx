@@ -1,0 +1,55 @@
+// ** Icons Imports
+import * as Icon from "react-feather";
+// ** Reactstrap Imports
+import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+import { Timeline } from "antd";
+import { SmileOutlined } from "@ant-design/icons";
+
+const TimeLine = () => {
+  const renderTransactions = () => {
+    return (
+      <Timeline>
+        <Timeline.Item color="green">
+          Create a services site 2015-09-01
+        </Timeline.Item>
+        <Timeline.Item color="green">
+          Create a services site 2015-09-01
+        </Timeline.Item>
+        <Timeline.Item color="red">
+          <p>Solve initial network problems 1</p>
+          <p>Solve initial network problems 2</p>
+          <p>Solve initial network problems 3 2015-09-01</p>
+        </Timeline.Item>
+        <Timeline.Item>
+          <p>Technical testing 1</p>
+          <p>Technical testing 2</p>
+          <p>Technical testing 3 2015-09-01</p>
+        </Timeline.Item>
+        <Timeline.Item color="gray">
+          <p>Technical testing 1</p>
+          <p>Technical testing 2</p>
+          <p>Technical testing 3 2015-09-01</p>
+        </Timeline.Item>
+        <Timeline.Item color="red">
+          <p>Solve initial network problems 1</p>
+          <p>Solve initial network problems 2</p>
+          <p>Solve initial network problems 3 2015-09-01</p>
+        </Timeline.Item>
+        <Timeline.Item color="#00CCFF" dot={<SmileOutlined />}>
+          <p>Custom color testing</p>
+        </Timeline.Item>
+      </Timeline>
+    );
+  };
+
+  return (
+    <Card className="card-transaction">
+      <CardHeader className="cardHeaderCustom card-header">
+        <CardTitle tag="h4" >Last Activities</CardTitle>
+      </CardHeader>
+      <CardBody style={{paddingTop:"1rem",maxHeight:"370px",overflowY:"auto"}}>{renderTransactions()}</CardBody>
+    </Card>
+  );
+};
+
+export default TimeLine;
