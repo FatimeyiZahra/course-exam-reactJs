@@ -25,8 +25,8 @@ const SideBarMenuItem = () => {
             <Menu.Item key="4">Bill</Menu.Item>
             <Menu.Item key="5">Alex</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined style={{ fontSize: "20px"}}/>} title="Team" style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e"  }}>
-            <Menu.Item key="6">Team 1</Menu.Item>
+          <SubMenu key="sub2" icon={<TeamOutlined style={{ fontSize: "20px"}}/>} title="Course" style={{ fontWeight:"400",fontSize: "1.1rem ",color:"#625f6e"  }}>
+            <Menu.Item key="6"><Link to="/SelfStudyCourse">Seld Study Course Category</Link></Menu.Item>
             <Menu.Item key="8">Team 2</Menu.Item>
           </SubMenu>
           <Menu.Item key="9" icon={<FileOutlined  style={{ fontSize: "20px",margin: "0px 6px 0px 0px"}}/>} style={{ fontWeight:"400",fontSize: "1.1rem " ,color:"#625f6e" }}>

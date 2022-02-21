@@ -5,7 +5,7 @@
 .card {
   background-color: #fff;
   background-clip: border-box;
-  border: 0 solid rgba(34, 41, 47, 0.125);
+  border: 0 solid rgba(34, 41, 47, 0.125) !important;
   border-radius: 0.428rem;
 }
 .card {
