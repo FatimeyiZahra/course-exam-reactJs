@@ -1,118 +1,85 @@
-import { MDBDataTableV5 } from "mdbreact";
-import { useEffect, useState } from "react";
-import { Row, Col } from "reactstrap";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
-import "./index.css"
+import React,{useState} from "react";
+import ReactDOM from "react-dom";
+import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
 
-function SelfStudyCoursesCategory() {
-  const [posts, setPosts] = useState([]);
-  const [usersForRender, setUsersForRender] = useState([]);
+import { data } from "./data";
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((res) => {
-        setPosts(res);
-      });
-  }, []);
+import "./index.css";
 
-  // let deletePost = (postId) => {
-  //   fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       var postIndex = posts.findIndex(function (o) {
-  //         return o.id === postId;
-  //       });
-  //       if (postIndex !== -1) {
-  //         setPosts(posts.filter((item) => item.id != postId));
-  //       }
-  //     });
-  // };
+const SelfStudyCoursesCategory = (props) => {
+  const [first, setfirst] = useState()
+  const notebookEntryHandler = () => {
 
-  useEffect(() => {
-    let postsArray = JSON.parse(JSON.stringify(posts));
-    let userData = [];
-    postsArray.map((item, index) => {
-      item.id = (
-        <div style={{ fontWeight: "bold", fontSize: "1.2em" }}>{item.id}</div>
-      );
-      item.action = (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div
-            className="uil-trash-alt btn-outline-primary"
-            style={{
-              cursor: "pointer",
-              color: "black",
-              fontSize: ".7em",
-              padding: ".5rem",
-              borderRadius: ".3rem",
-              // background: "#fb6262",
-            }}
-            // onClick={() => deletePost(posts[index].id)}
-          >
-            Courses
-          </div>
-        </div>
-      );
-      userData.push(item);
-    });
-    setUsersForRender(userData);
-  }, [posts]);
-
-  const data = {
-    columns: [
-      {
-        label: "#",
-        field: "id",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Title",
-        field: "title",
-        sort: "asc",
-        width: 270,
-      },
-
-      {
-        label: "Body",
-        field: "body",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Action",
-        field: "action",
-        width: 100,
-      },
-    ],
-
-    rows: usersForRender,
   };
-
+  const clickhandler = name => console.log("delete", name);
+ 
+  const columns = [
+    {
+      name: "Title",
+      selector: "title",
+      sortable: true
+    },
+    {
+      name: "Director",
+      selector: "director",
+      sortable: true
+    },
+    {
+      name: "Genres",
+      selector: "genres",
+      sortable: true,
+      cell: d => <span>{d.genres.join(", ")}</span>
+    },
+    {
+      name: "Year",
+      selector: "year",
+      sortable: true
+    },{
+      name: "Buttons",
+      button: true,
+      cell: row =>
+        row.showButtons ? (
+          <>
+            <button 
+             onClick={() => props.click(row.name)}
+              style={{ marginRight: "5px" }}
+            >
+              Edit
+            </button>
+            <button >Delete</button>
+          </>
+        ) : null
+    }
+  ];
+  const tableData = {
+    columns,
+    data
+  };
+ const rowClickedHandler = (event, data, rowIndex) => {
+    console.log("event", event);
+    console.log("row data", data);
+    console.log("row index", rowIndex);
+}
   return (
-    <div className=" card">
-      <Row>
-        <Col sm="12">
-          <MDBDataTableV5
-            hover
-            entriesOptions={[5, 20, 25]}
-            entries={5}
-            pagesAmount={4}
-            //  searchTop
-            //  searchBottom={false}
-            data={data}
-            responsive
-            //  hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4}
-          />
-        </Col>
-      </Row>
+    <div className="main">
+      <DataTableExtensions {...tableData}>
+        <DataTable
+          columns={columns}
+          data={data}
+          noHeader
+          defaultSortField="id"
+          defaultSortAsc={false}
+          pagination
+          highlightOnHover
+           onRowClicked={rowClickedHandler}
+          click={clickhandler}
+        />
+      </DataTableExtensions>
     </div>
   );
 }
 
-export default SelfStudyCoursesCategory;
+
+export default SelfStudyCoursesCategory
