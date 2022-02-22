@@ -45,7 +45,6 @@ export const data = [
     id: 1,
     title: "Beetlejuice",
     year: "1988",
-    showButtons: true,
     runtime: "92",
     genres: ["Comedy", "Fantasy"],
     director: "Tim Burton",
