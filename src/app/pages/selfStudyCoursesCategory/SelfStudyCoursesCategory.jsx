@@ -38,6 +38,7 @@ function SelfStudyCoursesCategory() {
     let postsArray = JSON.parse(JSON.stringify(posts));
     let userData = [];
     postsArray.map((item, index) => {
+      // return()
       // item.id = (
       //   <div style={{ fontWeight: "bold", fontSize: "1.2em" }}>{item.id}</div>
       // );
@@ -109,6 +110,7 @@ function SelfStudyCoursesCategory() {
              searchBottom={false}
             data={data}
             responsive
+            fullPagination
             //  hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4}
           />
         </Col>
