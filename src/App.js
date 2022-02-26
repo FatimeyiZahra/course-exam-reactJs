@@ -7,6 +7,7 @@ import DashboardLayout from "./app/layout/DashboardLayout";
 import SignIn from "./app/pages/signIn/SignIn";
 import DashBoard from "./app/pages/dashboard/DashBoard";
 import SelfStudyCoursesCategory from "./app/pages/selfStudyCoursesCategory/SelfStudyCoursesCategory";
+import CourseDetails from "./app/pages/courseDetails/CourseDetails";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 //  import 'bootstrap-css-only/css/bootstrap.min.css';
 //   import 'mdbreact/dist/css/mdb.css';
@@ -24,6 +25,9 @@ function App() {
           </Route>
          <Route exact path="/SelfStudyCourse">
            <SelfStudyCoursesCategory/>
+         </Route>
+         <Route exact path="/courseDetails">
+           <CourseDetails/>
          </Route>
         </DashboardLayout>
       </Switch>

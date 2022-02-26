@@ -1,0 +1,61 @@
+.cardWithTable .ant-card-body {
+  padding: 0 !important;
+}
+.cardWithTable .table-sm tbody th {
+  font-size: 0.625rem;
+}
+.cardWithTable .table tbody th {
+  background-color: #f9fbfd;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #95aac9;
+  border-bottom-width: 1px;
+}
+.cardWithTable .table tbody td,
+.cardWithTable .table tbody th,
+.cardWithTable .table thead th {
+  vertical-align: middle;
+}
+
+.cardWithTable .table-sm td,
+.cardWithTable .table-sm th {
+  padding: 1rem;
+}
+.cardWithTable .table-sm td small,
+.cardWithTable .table-sm td {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #3a4b60 !important;
+}
+.cardWithTable .card-table tbody td:last-child,
+.cardWithTable .card-table thead th:last-child {
+  padding-right: 1.5rem !important;
+}
+.cardWithTable table tr {
+  border-bottom: 1px solid #edf2f9;
+}
+.align-items-end {
+  align-items: flex-end !important;
+}
+.lift.btn-disable-block {
+  width: auto !important;
+  display: inline-block;
+  margin-top: 0 !important;
+  margin-left: 10px;
+}
+.header-pretitle {
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #95aac9;
+    margin-bottom: 0.5625rem !important;
+    font-size: 11px !important;
+    line-height: 1.1;
+    font-weight: 500;
+}
+.header-title {
+    /* margin-bottom: 0; */
+    letter-spacing: -.02em;
+    font-weight: bold;
+    font-size: 23px;
+}

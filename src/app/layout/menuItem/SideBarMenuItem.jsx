@@ -30,7 +30,7 @@ const SideBarMenuItem = () => {
             <Menu.Item key="8">Team 2</Menu.Item>
           </SubMenu>
           <Menu.Item key="9" icon={<FileOutlined  style={{ fontSize: "20px",margin: "0px 6px 0px 0px"}}/>} style={{ fontWeight:"400",fontSize: "1.1rem " ,color:"#625f6e" }}>
-            Files
+          <Link to="/courseDetails">Course Details</Link>
           </Menu.Item>
         </Menu>
   )

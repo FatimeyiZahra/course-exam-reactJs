@@ -231,6 +231,13 @@ div.mdb-datatable div.mdb-datatable-entries {
   padding-left: 0.7rem;
   padding-right: 0.7rem;
 }
+div.mdb-datatable div.mdb-datatable-entries{
+  color: #95aac9;
+}
+div.mdb-datatable div.mdb-datatable-entries .custom-select {
+color: #758eb2 ;
+outline: none;
+}
 div.mdb-datatable div.mdb-datatable-length label,
 div.mdb-datatable div.mdb-datatable-filter label {
   font-weight: 400;
@@ -238,19 +245,11 @@ div.mdb-datatable div.mdb-datatable-filter label {
   margin-bottom: 0;
 }
 div.mdb-datatable div.mdb-datatable-info {
+  color: #95aac9;
   /* display: flex; */
   justify-content: center;
 }
-div.mdb-datatable div.mdb-datatable-info,
-div.mdb-datatable div.mdb-dataTables_paginate,
-div.mdb-datatable div.mdb-datatable-entries {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-weight: 400;
-  font-size: 0.9rem;
-  padding-left: 0.7rem;
-  padding-right: 0.7rem;
-}
+
 .align-items-center {
   align-items: center !important;
 }
@@ -303,16 +302,7 @@ div.mdb-datatable div.mdb-datatable-filter input {
 .mdb-datatable .ml-1 {
   border-bottom: 1px solid #edf2f9;
 }
-div.mdb-datatable div.mdb-datatable-info,
-div.mdb-datatable div.mdb-dataTables_paginate,
-div.mdb-datatable div.mdb-datatable-entries {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-weight: 400;
-  font-size: 0.9rem;
-  padding-left: 0.7rem;
-  padding-right: 0.7rem;
-}
+
 .m-0 {
   margin: 0 !important;
 }
@@ -351,14 +341,7 @@ div.mdb-datatable div.mdb-dataTables_paginate ul.pagination {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
-.pagination .page-item .page-link {
-  font-size: 0.9rem;
-  /* color: #212529; */
-  /* background-color: transparent; */
-  border: 0;
-  outline: 0;
-  transition: all 0.3s linear;
-}
+
 a:not([href]):not([tabindex]),
 a:not([href]):not([tabindex]):focus,
 a:not([href]):not([tabindex]):hover {
@@ -400,11 +383,11 @@ textarea {
 }
 .pagination .page-item .page-link {
   font-size: 0.9rem;
-  color: #212529;
+  color: #91a9cc;
   background-color: transparent;
   border: 0;
   outline: 0;
-  transition: all 0.3s linear;
+  /* transition: all 0.3s linear; */
 }
 .form-control-sm {
   height: calc(1.5em + 0.5rem + 2px);
@@ -9843,16 +9826,9 @@ table.table a.btn.btn-black {
   background-color: #4285f4;
 }
 .pagination .page-item.disabled .page-link {
-  color: #868e96;
+  color:#b5c0ca;
 }
-.pagination .page-item .page-link {
-  font-size: 0.9rem;
-  color: #212529;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  transition: all 0.3s linear;
-}
+
 .pagination .page-item .page-link:hover {
   background-color: #eee;
   border-radius: 0.125rem;
