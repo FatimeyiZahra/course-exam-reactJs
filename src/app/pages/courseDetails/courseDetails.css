@@ -12,6 +12,9 @@
   color: #95aac9;
   border-bottom-width: 1px;
 }
+.cardWithTable .table tbody th:first-child {
+  border-top: 1px solid #edf2f9;
+}
 .cardWithTable .table tbody td,
 .cardWithTable .table tbody th,
 .cardWithTable .table thead th {
