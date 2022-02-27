@@ -1,10 +1,13 @@
 import { MDBDataTableV5 } from "mdbreact";
 import { useEffect, useState } from "react";
+import "antd/dist/antd.min.css";
 import { Row, Col } from "reactstrap";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Button } from "antd";
+import { UnorderedListOutlined } from "@ant-design/icons";
 // import "bootstrap-css-only/css/bootstrap.min.css";
 // import "mdbreact/dist/css/mdb.css";
-import "./index.css"
+import "./index.css";
 import { Link } from "react-router-dom";
 
 function SelfStudyCoursesCategory() {
@@ -43,21 +46,29 @@ function SelfStudyCoursesCategory() {
       //   <div style={{ fontWeight: "bold", fontSize: "1.2em" }}>{item.id}</div>
       // );
       item.action = (
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div
-            className="uil-trash-alt btn-outline-primary"
-            style={{
-              cursor: "pointer",
-              color: "black",
-              fontSize: ".7em",
-              padding: ".5rem",
-              borderRadius: ".3rem",
-              // background: "#fb6262",
-            }}
-            // onClick={() => deletePost(posts[index].id)}
+          // onClick={() => deletePost(posts[index].id)}
           >
-            <Link to={`/${posts[index].id}`}>Courses</Link>
-            
+            <Link to={`/${posts[index].id}`}>
+              {" "}
+              <Button
+              className="btnOutline"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: " 0.125rem 0.5rem",
+                  fontSize: ".8125rem",
+                  lineheight: "1.75",
+                  borderRadius: "0.25rem",
+                  color: "#40a9ff",
+                  borderColor:"#40a9ff"
+                }}
+                icon={<UnorderedListOutlined style={{marginBottom:"1px"}} />}
+              >
+                Courses
+              </Button>
+            </Link>
           </div>
         </div>
       );
@@ -106,8 +117,8 @@ function SelfStudyCoursesCategory() {
             entriesOptions={[5, 20, 25]}
             entries={5}
             pagesAmount={4}
-             searchTop
-             searchBottom={false}
+            searchTop
+            searchBottom={false}
             data={data}
             responsive
             fullPagination

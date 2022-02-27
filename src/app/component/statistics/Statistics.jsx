@@ -15,7 +15,7 @@ const Statistics = () => {
                 <Statistic
                   title={<Title level={5} style={{  color:"#95aac9"}}>Courses Completed</Title>}
                   value={1}
-                  valueStyle={{ color: "#12263f" }}
+                  valueStyle={{ color: "#12263f",fontWeight: "400" }}
                 />
               </Col>
               <Col flex="auto" offset={2}>
@@ -31,7 +31,7 @@ const Statistics = () => {
                 <Statistic
                   title={<Title level={5} style={{  color:"#95aac9"}}>Slides Watched</Title>}
                   value={23}
-                  valueStyle={{ color: "#12263f" }}
+                  valueStyle={{ color: "#12263f",fontWeight: "400" }}
                 />
               </Col>
               <Col flex="auto" offset={2}>
@@ -47,7 +47,7 @@ const Statistics = () => {
                 <Statistic
                   title={<Title level={5} style={{  color:"#95aac9"}}>Exams Entered</Title>}
                   value={42}
-                  valueStyle={{ color: "#12263f" }}
+                  valueStyle={{ color: "#12263f" ,fontWeight: "400"}}
                 />
               </Col>
               <Col flex="auto" offset={2}>
@@ -63,7 +63,7 @@ const Statistics = () => {
                 <Statistic
                   title={<Title level={5} style={{  color:"#95aac9"}}>Questions Solved</Title>}
                   value={73}
-                  valueStyle={{ color: "#12263f" }}
+                  valueStyle={{ color: "#12263f",fontWeight: "400" }}
                 />
               </Col>
               <Col flex="auto" offset={2}>
