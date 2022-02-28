@@ -22,6 +22,7 @@ import 'antd/dist/antd.min.css'
 // import { UserOutlined } from '@ant-design/icons';
 import defaultAvatar from "../../../assets/image/avatar/avatar-s-11.jpg";
 import { Menu, Dropdown } from "antd";
+import { Link } from "react-router-dom";
 // import { DownOutlined } from "@ant-design/icons";
 const UserDropdown = () => {
   const [userData] = useState(null);
@@ -36,15 +37,21 @@ const UserDropdown = () => {
   //** Vars
   const userAvatar = (userData && userData.avatar) || defaultAvatar;
   const menu = (
-    <Menu>
-      <Menu.Item key="0">
-        <a href="https://www.antgroup.com">1st menu item</a>
+    <Menu style={{minWidth: "10rem",padding:" 0.5rem 0",borderRadius:".375rem"}}>
+      <Menu.Item key="0" style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
+        <Link to={"./"}>Messages</Link>
       </Menu.Item>
-      <Menu.Item key="1">
-        <a href="https://www.aliyun.com">2nd menu item</a>
+      <Menu.Item key="1"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
+        <Link to={"./"}>Account</Link>
+      </Menu.Item>
+      <Menu.Item key="2"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
+        <a href="https://www.aliyun.com">Password</a>
+      </Menu.Item>
+      <Menu.Item key="3"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
+        <a href="https://www.aliyun.com">Contact</a>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="3">3rd menu item</Menu.Item>
+      <Menu.Item key="4"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>Logout</Menu.Item>
     </Menu>
   );
   return (

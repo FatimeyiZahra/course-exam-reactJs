@@ -176,3 +176,6 @@
     margin: 1.3rem auto 0;
   }
 }
+.DropDownPosition.ant-dropdown{
+  left: 1338px !important;
+}

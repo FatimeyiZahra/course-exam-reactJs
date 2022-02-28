@@ -85,7 +85,7 @@ const DashboardLayout = ({ children }) => {
                 }
               )}
             </Col>
-            <Col span={6} align="right" style={{display: "contents"}}>
+            <Col className="DropDownPosition" span={6} align="right" style={{display: "contents"}}>
               <UserDropdown />
             </Col>
           </Row>
