@@ -53,7 +53,7 @@ function SelfStudyCoursesCategory() {
             <Link to={`/${posts[index].id}`}>
               {" "}
               <Button
-              className="btnOutline"
+                className="btnOutline"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -62,9 +62,9 @@ function SelfStudyCoursesCategory() {
                   lineheight: "1.75",
                   borderRadius: "0.25rem",
                   color: "#40a9ff",
-                  borderColor:"#40a9ff"
+                  borderColor: "#40a9ff",
                 }}
-                icon={<UnorderedListOutlined style={{marginBottom:"1px"}} />}
+                icon={<UnorderedListOutlined style={{ marginBottom: "1px" }} />}
               >
                 Courses
               </Button>

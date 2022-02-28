@@ -2,113 +2,109 @@ import React from "react";
 import { Row, Col } from "antd";
 import "antd/dist/antd.min.css";
 import "./courseDetails.css";
-import { Card } from "antd";
+import CourseDetailsTable from "../../component/courseDetailsTable/CourseDetailsTable";
+import CourseDetailsHeader from "./CourseDetailsHeader";
+import { Collapse } from "antd";
+import { Card, CardBody, CardText, CardTitle, CardHeader } from "reactstrap";
+import { SettingOutlined } from '@ant-design/icons';
+const { Panel } = Collapse;
+
+const text = (
+  <ul className="course-unit-list">
+  <li className="course-unit-list-sub-unit-title">Sms is Focus On</li>
+  <li className="course-unit-list-sub-unit-title">Safety Goals and Safety Manual</li>
+  <li className="course-unit-list-sub-unit-title">What is The Benefits Of Sms</li>
+  </ul>
+);
+const genExtra = () => (
+  <SettingOutlined
+    onClick={event => {
+      // If you don't want click extra trigger collapse, you can prevent this:
+      event.stopPropagation();
+    }}
+  />
+);
 
 const CourseDetails = () => {
   return (
-    <div>
-      <div style={{ marginBottom: " 2rem" }}>
-        <Row justify="space-between">
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <p className="header-pretitle"> Courses</p>
-            <h1 className="header-title">Course Details</h1>
-          </Col>
-          <Col xs={24} sm={24} md={12} lg={12} xl={12} align="right">
-            <a
-              href="!#"
-              className="btn btn-round btn-block btn-warning lift btn-disable-block"
-              style={{ padding: "0.5rem 0.75rem" }}
-            >
-              Self Study Exam
-            </a>
-            <a
-              href="!#"
-              className="btn btn-round btn-block btn-warning lift btn-disable-block"
-              style={{ marginLeft: "10px", padding: "0.5rem 0.75rem" }}
-            >
-              Self Study Course
-            </a>
-          </Col>
-        </Row>
+    <div style={{ marginLeft: "15px" }}>
+      <div
+        style={{
+          marginBottom: " 2rem",
+          borderBottom: "1px solid #dbe6f4",
+          paddingBottom: "1.5rem",
+        }}
+      >
+        <CourseDetailsHeader />
       </div>
 
       <Row gutter={[16, 16]}>
         <Col xs={24} md={16} lg={16}>
-          <Card
-            title="SAFETY MANAGEMENT SYSTEM - SMS"
-            className="cardWithTable"
-            style={{ padding: 0 }}
-          >
-            <table className="table table-sm card-table">
-              <tbody className="list font-size-sm">
-                <tr>
-                  <th>Category</th>
-                  <td>GENERAL SUBJECT COURSES</td>
-                </tr>
-                <tr>
-                  <th>Status</th>
-                  <td>
-                    <span className="badge badge-warning">SELF STUDY</span>
-                    <small style={{ paddingLeft: "10px" }}>
-                      Course is either completed or is not in certification
-                      period. Reference only
-                    </small>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Version</th>
-                  <td>1.3 </td>
-                </tr>
-                <tr>
-                  <th>Total Slides </th>
-                  <td>74 </td>
-                </tr>
-                <tr>
-                  <th>Duration</th>
-                  <td>00:35:10</td>
-                </tr>
-                <tr>
-                  <th>Subtitle </th>
-                  <td>en</td>
-                </tr>
-                <tr>
-                  <th>Exam Pass</th>
-                  <td>
-                    <b>%80</b> grade in <b>10</b> questions{" "}
-                  </td>
-                </tr>
-                <tr>
-                  <th>Used Exam Trial</th>
-                  <td>0</td>
-                </tr>
-                <tr className="d-none d-lg-table-row">
-                  <th className="vertical-align-top">Course Description</th>
-                  <td>
-                    Safety Management System Online Course starts with
-                    definitions and Basic Parts of an SMS Program which are
-                    Organizational Commitment, Safety Organization and Planning,
-                    Provision for Compliance with Legal and Regulatory. The
-                    course then focuses on Procedures and Control, Safety Risk
-                    Management Procedures, Safety Policy, Staff Reporting and
-                    Responsibilities. A short summary is presented for you at
-                    the end of the course.{" "}
-                  </td>
-                </tr>
-                <tr>
-                  <th>Course Files</th>
-                  <td className="pl-0">
-                    <button
-                      type="button"
-                      className="btn btn-round btn-block  btn-sm btn-outline-primary btn-disable-block"
-                    >
-                      <i className="fe fe-file-text"></i> FULL COURSE TEXT
-                    </button>{" "}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <CourseDetailsTable />
+        </Col>
+        <Col xs={24} md={8} lg={8}>
+          <Card className="card-browser-states no-shadow">
+            <CardHeader className="cardHeaderCustom">
+              <div>
+                <CardTitle tag="h4">Course Units</CardTitle>
+                {/* <CardText className="font-small-2">
+                  Counter August 2020
+                </CardText> */}
+              </div>
+            </CardHeader>
+            <CardBody className="p-0" style={{padding:"0 !important"}}>
+            {/* <Collapse bordered={false} defaultActiveKey={["1"]}> */}
+              <Collapse bordered={false} >
+              {/* <Panel className="course-unit-list-title" showArrow={false} header="INTRODUCTION" key="1" extra={genExtra()}>
+                  {text}
+                </Panel> */}
+                <Panel className="course-unit-list-title" showArrow={false} header="INTRODUCTION" key="1" extra="0">
+                  {text}
+                </Panel>
+                <Panel className="course-unit-list-title" showArrow={false} header="SAFETY MANAGEMENT SYSTEM" key="2" extra="1">
+                  {text}
+                </Panel>
+                <Panel className="course-unit-list-title" showArrow={false} header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY " key="3" extra="5">
+                  <ul className="course-unit-list">
+                    <li className="course-unit-list-sub-unit-title">What is Safety Management System (Sms)</li>
+                    <li className="course-unit-list-sub-unit-title">Sms is Focus On</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Key /Main Phase Of Sms</li>
+                    <li className="course-unit-list-sub-unit-title">Safety Goals and Safety Manual</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Benefits Of Sms</li>
+                    </ul>
+                </Panel>
+                <Panel className="course-unit-list-title" showArrow={false} header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY " key="4" extra="5">
+                  <ul className="course-unit-list">
+                    <li className="course-unit-list-sub-unit-title">What is Safety Management System (Sms)</li>
+                    <li className="course-unit-list-sub-unit-title">Sms is Focus On</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Key /Main Phase Of Sms</li>
+                    <li className="course-unit-list-sub-unit-title">Safety Goals and Safety Manual</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Benefits Of Sms</li>
+                    </ul>
+                </Panel>
+                <Panel className="course-unit-list-title" showArrow={false} header="SAFETY RISK MANAGEMENT - HAZARD IDENTIFICATION - HAZARD IDENTIFICATION METHODS" key="5" extra="23">
+                  <ul className="course-unit-list">
+                    <li className="course-unit-list-sub-unit-title">What is Safety Management System (Sms)</li>
+                    <li className="course-unit-list-sub-unit-title">Sms is Focus On</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Key /Main Phase Of Sms</li>
+                    <li className="course-unit-list-sub-unit-title">Safety Goals and Safety Manual</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Benefits Of Sms</li>
+                    </ul>
+                </Panel>
+                <Panel className="course-unit-list-title" showArrow={false} header="THE SAFETY PROMOTION " key="6" extra="8">
+                  <ul className="course-unit-list">
+                    <li className="course-unit-list-sub-unit-title">What is Safety Management System (Sms)</li>
+                    <li className="course-unit-list-sub-unit-title">Sms is Focus On</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Key /Main Phase Of Sms</li>
+                    <li className="course-unit-list-sub-unit-title">Safety Goals and Safety Manual</li>
+                    <li className="course-unit-list-sub-unit-title">What is The Benefits Of Sms</li>
+                    </ul>
+                </Panel>
+              </Collapse>
+            </CardBody>
           </Card>
         </Col>
+       
       </Row>
     </div>
   );
