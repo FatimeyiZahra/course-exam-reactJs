@@ -7,7 +7,7 @@ const CourseDetailsTable = () => {
     <Card
       title="SAFETY MANAGEMENT SYSTEM - SMS"
       className="cardWithTable"
-      style={{ padding: 0 }}
+      style={{ padding: 0 , marginBottom:" 1.5rem"}}
     >
       <table className="table table-sm card-table">
         <tbody className="list font-size-sm">

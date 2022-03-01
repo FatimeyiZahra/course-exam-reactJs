@@ -42,7 +42,7 @@ const UserDropdown = () => {
         <Link to={"./"}>Messages</Link>
       </Menu.Item>
       <Menu.Item key="1"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
-        <Link to={"./"}>Account</Link>
+        <Link to={"/user-information"}>Account</Link>
       </Menu.Item>
       <Menu.Item key="2"  style={{padding:".375rem 1.5rem",color: "#6e84a3"}}>
         <a href="https://www.aliyun.com">Password</a>

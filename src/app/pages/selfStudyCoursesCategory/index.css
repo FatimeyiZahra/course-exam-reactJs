@@ -1525,3 +1525,6 @@ code {
 color: #fff !important;
 background-color: #40a9ff;
 }
+table{
+  margin-bottom: 0 !important;
+}
