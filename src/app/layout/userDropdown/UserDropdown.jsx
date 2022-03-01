@@ -20,7 +20,7 @@ import 'antd/dist/antd.min.css'
 //   DropdownItem,
 // } from "reactstrap";
 // import { UserOutlined } from '@ant-design/icons';
-import defaultAvatar from "../../../assets/image/avatar/avatar-s-11.jpg";
+import defaultAvatar from "../../../assets/image/avatar/avatar.png";
 import { Menu, Dropdown } from "antd";
 import { Link } from "react-router-dom";
 // import { DownOutlined } from "@ant-design/icons";

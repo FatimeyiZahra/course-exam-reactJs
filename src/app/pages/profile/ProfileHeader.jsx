@@ -3,7 +3,8 @@
 // ** Icons Imports
 import { useState } from "react";
 import { AlignJustify, Rss, Info, Image, Users, Edit } from "react-feather";
-
+import UserAvatar from "../../../assets/image/avatar/avatar.png"
+import BackGroundPic from "../../../assets/image/background/profile-cover-9.jpg"
 // ** Reactstrap Imports
 import {
   Card,
@@ -33,21 +34,17 @@ const ProfileHeader = () => {
   return (
     <Card className="profile-header mb-2">
       <CardImg
-        src="http://localhost:3001/static/media/timeline.91041dd4.jpg"
+        src={BackGroundPic}
         alt="User Profile Image"
         top
       />
       <div className="position-relative">
         <div className="profile-img-container d-flex align-items-center">
           <div className="profile-img">
-            <img
-              className="rounded img-fluid"
-              src="http://localhost:3001/static/media/avatar-s-2.d21f2121.jpg"
-              alt="Card image"
-            />
+            <img  className="rounded img-fluid"  src={UserAvatar} alt="Card"  />
           </div>
           <div className="profile-title ms-3">
-            <h2 className="text-white">Stanislav Karimov</h2>
+            <h2 className="text-black">Stanislav Karimov</h2>
             {/* <p className="text-white">Designer</p> */}
           </div>
         </div>

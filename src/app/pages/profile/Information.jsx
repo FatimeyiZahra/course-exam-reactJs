@@ -9,7 +9,7 @@ const Information = () => {
       <table className="table table-sm card-table">
         <tbody className="list font-size-sm">
           <tr>
-            <th style={{width:"191px",height:"52px"}}>FIRST NAME</th>
+            <th style={{width:"191px",border:"none"}}>FIRST NAME</th>
             <td>Stanislav</td>
           </tr>
           <tr>
