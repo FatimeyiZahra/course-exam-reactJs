@@ -995,7 +995,9 @@ a.text-light:focus {
 strong {
   font-weight: 500;
 }
-
+table{
+  font-family:  "Montserrat", sans-serif !important;
+}
 table.table a.btn.btn-light-blue {
   color: #fff;
 }
