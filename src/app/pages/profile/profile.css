@@ -345,6 +345,7 @@ element.style {
   border-radius: 0.357rem;
   font-weight: 400;
   color: #6e6b7b;
+  display: block;
 }
 .update-user-info textarea {
   font-family: "Montserrat", sans-serif;

@@ -1,59 +1,78 @@
-import React, {useState} from 'react'
-import { Layout, Menu } from "antd";
-import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    UserOutlined,
-    DesktopOutlined,
-    PieChartOutlined,
-    TeamOutlined,
-    FileOutlined,
-  } from "@ant-design/icons";
-  const { SubMenu } = Menu;
-  const { Header, Sider, Content } = Layout;
+import React from "react";
+import { Layout } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCollapsed, changeMenuOpen } from "../../../redux/actions/navbar";
+import { CloseOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import SideBarMenuItem from "../menuItem/SideBarMenuItem";
+import logo from "../../../assets/image/logo/logo.svg";
+
+const { Sider } = Layout;
 
 const DashboardSider = () => {
-    const [collapsed, setState] = useState(false);
-    const toggle = () => {
-        setState(!collapsed);
-      };
+  const dispatch = useDispatch();
+
+  const collapsed = useSelector((state) => state.NavbarReducer.collapsed.val);
+  const menuOpen = useSelector((state) => state.NavbarReducer.menuOpen.val);
+
+  const toggle = () => {
+    dispatch(changeCollapsed(!collapsed));
+    dispatch(changeMenuOpen(!menuOpen));
+  };
+  // console.log(menuOpen);
   return (
     <Sider
-    trigger={null}
-    collapsible
-    collapsed={collapsed}
-    //   style={{
-    //   overflow: 'auto',
-    //   height: '100vh',
-    //   position: 'fixed',
-    //   left: 0,
-    //   top: 0,
-    //   bottom: 0,
-    // }}
-  >
-    <div className="logo" />
-    <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-      <Menu.Item key="1" icon={<PieChartOutlined />}>
-        Option 1
-      </Menu.Item>
-      <Menu.Item key="2" icon={<DesktopOutlined />}>
-        Option 2
-      </Menu.Item>
-      <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-        <Menu.Item key="3">Tom</Menu.Item>
-        <Menu.Item key="4">Bill</Menu.Item>
-        <Menu.Item key="5">Alex</Menu.Item>
-      </SubMenu>
-      <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-        <Menu.Item key="6">Team 1</Menu.Item>
-        <Menu.Item key="8">Team 2</Menu.Item>
-      </SubMenu>
-      <Menu.Item key="9" icon={<FileOutlined />}>
-        Files
-      </Menu.Item>
-    </Menu>
-  </Sider>
-  )
-}
+      theme="light"
+      trigger={null}
+      collapsible
+      collapsed={collapsed}
+      width={260}
+      // breakpoint="lg"
+      // collapsedWidth="0"
+      // onBreakpoint={broken => {
+      //   console.log(broken);
+      // }}
+      // onCollapse={(collapsed, type) => {
+      //   console.log(collapsed, type);
+      // }}
+      className={
+        menuOpen
+          ? "site-layout-background main-menu menu-shadow  menu-open"
+          : "site-layout-background main-menu menu-shadow hide"
+      }
+      style={{
+        // overflow: "auto",
+        height: "100vh",
+        position: "fixed",
+        left: 0,
+        top: 0,
+        bottom: 0,
+        zIndex: 999,
+      }}
+    >
+      <div className="sidebar-header">
+        <ul>
+          <li className="nav-item me-auto">
+            <Link to="/home">
+              <div className="logo">
+                <img src={logo} alt="" />
+              </div>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <div className="nav-toggle">
+              <CloseOutlined
+                style={{ color: "#7367f0" }}
+                onClick={toggle}
+              ></CloseOutlined>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-export default DashboardSider
+      <SideBarMenuItem />
+    </Sider>
+  );
+};
+
+export default DashboardSider;
