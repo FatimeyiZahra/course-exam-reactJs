@@ -46,7 +46,9 @@ const SideBarMenuItem = () => {
         <Menu.Item key="6">
           <Link to="/SelfStudyCourse">Seld Study Course Category</Link>
         </Menu.Item>
-        <Menu.Item key="8">Team 2</Menu.Item>
+        <Menu.Item key="8">
+        <Link to="/exam">Exam</Link>
+        </Menu.Item>
       </SubMenu>
       <Menu.Item
         key="9"

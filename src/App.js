@@ -12,6 +12,7 @@ import Probnik from "./app/pages/courseDetails/probnik";
 import UserProfile from "./app/pages/profile/UserProfile";
 import Information from "./app/pages/profile/Information";
 import UpdateProfile from "./app/pages/profile/UpdateProfile";
+import Exam from "./app/pages/exam/Exam";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 //  import 'bootstrap-css-only/css/bootstrap.min.css';
 //   import 'mdbreact/dist/css/mdb.css';
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/table">
             <Probnik />
+          </Route>
+          <Route exact path="/exam">
+            <Exam />
           </Route>
           <Route>
             <Route exact path={"/user-information"}>
