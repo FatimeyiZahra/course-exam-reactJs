@@ -1,132 +1,129 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import { MobileStepper } from "@mui/material";
 import Button from "@material-ui/core/Button";
-import Replay from '@mui/icons-material/Replay';
+import Replay from "@mui/icons-material/Replay";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
-const Quiz_Set = [
-  {
-    queno: "que_1",
-    que_id:1,
-    que: "1) How many sides are equal in a scalene triangle?",
-    options: [
-      { que_options: "3", selected: false },
-      { que_options: "2", selected: false },
-      { que_options: "0", selected: false },
-    ],
-    ans: "0",
-  },
-  {
-    queno: "que_2",
-    que_id:2,
-    que: "2) The angles of a triangle are 90°,35° and 55°.What type of triangle is this?",
-    options: [
-      { que_options: "Right Angled", selected: false },
-      { que_options: "Obtuse Angled", selected: false },
-      { que_options: "Acute Angled", selected: false },
-    ],
-    ans: "Right Angled",
-  },
-  {
-    queno: "que_3",
-    que_id:3,
-    que: "3) The perimeter of an equilateral triangle is 24cm.Length of each side(in cm) is?",
-    options: [
-      { que_options: "9", selected: false },
-      { que_options: "6", selected: false },
-      { que_options: "8", selected: false },
-    ],
-    ans: "8",
-  },
-  {
-    queno: "que_4",
-    que_id:4,
-    que: "4) The sum of angles of a triangle is?",
-    options: [
-      { que_options: "90", selected: false },
-      { que_options: "150", selected: false },
-      { que_options: "180", selected: false },
-    ],
-    ans: "180",
-  },
-  {
-    queno: "que_5",
-    que_id:5,
-    que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
-    options: [
-      { que_options: "Isosceles", selected: false },
-      { que_options: "Equilateral", selected: false },
-      { que_options: "Scalene", selected: false },
-    ],
-    ans: "Equilateral",
-  },
-  {
-    queno: "que_6",
-    que_id:6,
-    que: "6) What is a third angle for a triangle where angle1 = 57° and angle2 = 92° ?",
-    options: [
-      { que_options: "45", selected: false },
-      { que_options: "60", selected: false },
-      { que_options: "31", selected: false },
-    ],
-    ans: "31",
-  },
-  {
-    queno: "que_7",
-    que_id:7,
-    que: "7) Pythagoras theorem is applicable to which type of triangles?",
-    options: [
-      { que_options: "Right", selected: false },
-      { que_options: "Acute", selected: false },
-      { que_options: "Obtuse", selected: false },
-    ],
-    ans: "Right",
-  },
-  {
-    queno: "que_8",
-    que_id:8,
-    que: "8) The triangle which has 2 sides congruent?",
-    options: [
-      { que_options: "Equilateral", selected: false },
-      { que_options: "Isosceles", selected: false },
-      { que_options: "Scalene", selected: false },
-    ],
-    ans: "Isosceles",
-  },
-];
-
-class Exam extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeStep: 0,
-      Quiz_Set: Quiz_Set,
-      booleanonsubmit: false,
-      Total: 0,
-      open: false,
-      catchmsg: "",
-      errormsg: "",
-    };
-  }
-
-  handleNext = () => {
-    this.setState({ activeStep: this.state.activeStep + 1 });
+const Exam = () => {
+  const [Quiz_Set1, setQuiz] = useState(
+    [
+    {
+      queno: "que_1",
+      que_id: 1,
+      que: "1) How many sides are equal in a scalene triangle?",
+      options: [
+        { que_options: "3", selected: false },
+        { que_options: "2", selected: false },
+        { que_options: "0", selected: false },
+      ],
+      ans: "0",
+    },
+    {
+      queno: "que_2",
+      que_id: 2,
+      que: "2) The angles of a triangle are 90°,35° and 55°.What type of triangle is this?",
+      options: [
+        { que_options: "Right Angled", selected: false },
+        { que_options: "Obtuse Angled", selected: false },
+        { que_options: "Acute Angled", selected: false },
+      ],
+      ans: "Right Angled",
+    },
+    {
+      queno: "que_3",
+      que_id: 3,
+      que: "3) The perimeter of an equilateral triangle is 24cm.Length of each side(in cm) is?",
+      options: [
+        { que_options: "9", selected: false },
+        { que_options: "6", selected: false },
+        { que_options: "8", selected: false },
+      ],
+      ans: "8",
+    },
+    {
+      queno: "que_4",
+      que_id: 4,
+      que: "4) The sum of angles of a triangle is?",
+      options: [
+        { que_options: "90", selected: false },
+        { que_options: "150", selected: false },
+        { que_options: "180", selected: false },
+      ],
+      ans: "180",
+    },
+    {
+      queno: "que_5",
+      que_id: 5,
+      que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
+      options: [
+        { que_options: "Isosceles", selected: false },
+        { que_options: "Equilateral", selected: false },
+        { que_options: "Scalene", selected: false },
+      ],
+      ans: "Equilateral",
+    },
+    {
+      queno: "que_6",
+      que_id: 6,
+      que: "6) What is a third angle for a triangle where angle1 = 57° and angle2 = 92° ?",
+      options: [
+        { que_options: "45", selected: false },
+        { que_options: "60", selected: false },
+        { que_options: "31", selected: false },
+      ],
+      ans: "31",
+    },
+    {
+      queno: "que_7",
+      que_id: 7,
+      que: "7) Pythagoras theorem is applicable to which type of triangles?",
+      options: [
+        { que_options: "Right", selected: false },
+        { que_options: "Acute", selected: false },
+        { que_options: "Obtuse", selected: false },
+      ],
+      ans: "Right",
+    },
+    {
+      queno: "que_8",
+      que_id: 8,
+      que: "8) The triangle which has 2 sides congruent?",
+      options: [
+        { que_options: "Equilateral", selected: false },
+        { que_options: "Isosceles", selected: false },
+        { que_options: "Scalene", selected: false },
+      ],
+      ans: "Isosceles",
+    },
+  ]);
+  // console.log(Quiz_Set1)
+  const [state, setState] = useState({
+    activeStep: 0,
+    Quiz_Set: Quiz_Set1,
+    booleanonsubmit: false,
+    Total: 0,
+    open: false,
+    catchmsg: "",
+    errormsg: "",
+  });
+  const handleNext = () => {
+    setState({ activeStep: state.activeStep + 1 });
+  };
+  const handleBack = () => {
+    setState({ activeStep: state.activeStep - 1 });
   };
 
-  handleBack = () => {
-    this.setState({ activeStep: this.state.activeStep - 1 });
-  };
-
-  handleClose = (event, reason) => {
+  const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    this.setState({ open: false });
+    setState({ open: false });
   };
 
-  onInputChange = (e) => {
-    const { Quiz_Set } = this.state;
+  const onInputChange = (e) => {
+    // e.preventDefault();
+    const  Quiz_Set  = Quiz_Set1;
     const nexState = Quiz_Set.map((card) => {
       if (card.queno !== e.target.name) return card;
       return {
@@ -140,12 +137,13 @@ class Exam extends Component {
         }),
       };
     });
-    this.setState({ Quiz_Set: nexState });
+    setQuiz( nexState );
+    // console.log(nexState)
   };
 
-  onsubmit = () => {
-    //   console.log(this.state.Quiz_Set)
-    let list = this.state.Quiz_Set;
+  const onsubmit = () => {
+    //   console.log(state.Quiz_Set)
+    let list = Quiz_Set1;
     let count = 0;
     let notattempcount = 0;
 
@@ -153,7 +151,7 @@ class Exam extends Component {
       item.options.map((anslist, key) => {
         //  console.log("anslist.selected===>",anslist.selected)
         if (anslist.selected === true) {
-          console.log(item.que_id,anslist.que_options) //---------------------USER ANSWERS LIST
+          console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
           if (anslist.que_options === item.ans) {
             //   console.log("===>",anslist.que_options,item.ans)
             count = count + 1;
@@ -164,55 +162,67 @@ class Exam extends Component {
       });
     });
 
-//-------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------
     //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam.
     // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
     if (notattempcount <= 24 && notattempcount > 16) {
-      console.log(notattempcount)
-      this.setState({ booleanonsubmit: false, Total: count });
-      this.setState({
+      console.log(notattempcount);
+      setState({ booleanonsubmit: false, Total: count });
+      setState({
         catchmsg: "Please attempt all questions",
         errormsg: "error",
         open: true,
       });
     } else {
-      this.setState({ booleanonsubmit: true, Total: count });
+      setState({ booleanonsubmit: true, Total: count });
     }
   };
-//------------------------------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------------------------------
 
-  Snackbarrender = () => {
-    return this.state.open ? (
+  const Snackbarrender = () => {
+    return state.open ? (
       <Snackbar
-        open={this.state.open}
+        open={state.open}
         autoHideDuration={5000}
-        onClose={this.handleClose}
+        onClose={handleClose}
         style={{ marginTop: "0px", width: "100%" }}
       >
         <MuiAlert
           elevation={6}
           variant="filled"
-          onClose={this.handleClose}
-          severity={this.state.errormsg}
+          onClose={handleClose}
+          severity={state.errormsg}
         >
-          {this.state.catchmsg}
+          {state.catchmsg}
         </MuiAlert>
       </Snackbar>
     ) : null;
   };
-
-  render() {
-    return (
-      <div className="Quiz_render_container">
-        {this.state.booleanonsubmit ? (
-          <div className="Quiz-DisplayResult">
-            <h2> The score is {this.state.Total} Out Of 8 </h2>
-            <Button onClick={()=>{this.setState({booleanonsubmit:false,activeStep:0,Quiz_Set : Quiz_Set,Total:0})}}> <Replay/> Try again </Button> 
-          </div>
-        ) : (
-          <div className="Quiz_container_display">
-            {this.state.Quiz_Set.map((item, index) => {
-              if (Math.abs(this.state.activeStep - index) <= 0) {
+  // console.log(state.Quiz_Set.length)
+  return (
+    <div className="Quiz_render_container">
+      {state.booleanonsubmit ? (
+        <div className="Quiz-DisplayResult">
+          <h2> The score is {state.Total} Out Of 8 </h2>
+          <Button
+            onClick={() => {
+              setState({
+                booleanonsubmit: false,
+                activeStep: 0,
+                Quiz_Set1: Quiz_Set1,
+                Total: 0,
+              });
+            }}
+          >
+            {" "}
+            <Replay /> Try again{" "}
+          </Button>
+        </div>
+      ) : (
+        <div className="Quiz_container_display">
+          {Quiz_Set1 &&
+            Quiz_Set1.map((item, index) => {
+              if (Math.abs(state.activeStep - index) <= 0) {
                 return (
                   <div key={index}>
                     <div className="Quiz_que">{item.que}</div>
@@ -223,7 +233,7 @@ class Exam extends Component {
                       return (
                         <div key={index_ans} className="Quiz_multiple_options">
                           {/*----------------------------------------------------------- optionslarin indexini gosterir */}
-                          {/* {index_ans}]  */} 
+                          {/* {index_ans}]  */}
                           {ans.que_options}
                           <input
                             key={index_ans}
@@ -231,7 +241,7 @@ class Exam extends Component {
                             name={item.queno}
                             value={ans.que_options}
                             checked={!!ans.selected}
-                            onChange={this.onInputChange}
+                            onChange={onInputChange}
                           />
                         </div>
                       );
@@ -243,48 +253,45 @@ class Exam extends Component {
               }
             })}
 
-            <div className="Quiz-MobileStepper">
-              <MobileStepper
-                // variant="dots"
-                variant="text"
-                // variant="progress"
-                steps={this.state.Quiz_Set.length}
-                position="static"
-                activeStep={this.state.activeStep}
-                nextButton={
-                  this.state.activeStep === 7 ? (
-                    <Button size="small" onClick={this.onsubmit}>
-                      Submit
-                    </Button>
-                  ) : (
-                    <Button
-                      size="small"
-                      onClick={this.handleNext}
-                      disabled={
-                        this.state.activeStep === this.state.Quiz_Set.length
-                      }
-                    >
-                      Next
-                    </Button>
-                  )
-                }
-                backButton={
+          <div className="Quiz-MobileStepper">
+            <MobileStepper
+              // variant="dots"
+              variant="text"
+              // variant="progress"
+              steps={Quiz_Set1.length}
+              position="static"
+              activeStep={state.activeStep}
+              nextButton={
+                state.activeStep === 7 ? (
+                  <Button size="small" onClick={onsubmit}>
+                    Submit
+                  </Button>
+                ) : (
                   <Button
                     size="small"
-                    onClick={this.handleBack}
-                    disabled={this.state.activeStep === 0}
+                    onClick={handleNext}
+                    disabled={state.activeStep === Quiz_Set1.length}
                   >
-                    Back
+                    Next
                   </Button>
-                }
-              />
-            </div>
+                )
+              }
+              backButton={
+                <Button
+                  size="small"
+                  onClick={handleBack}
+                  disabled={state.activeStep === 0}
+                >
+                  Back
+                </Button>
+              }
+            />
           </div>
-        )}
-        {this.Snackbarrender()}
-      </div>
-    );
-  }
-}
+        </div>
+      )}
+      {Snackbarrender()}
+    </div>
+  );
+};
 
 export default Exam;
