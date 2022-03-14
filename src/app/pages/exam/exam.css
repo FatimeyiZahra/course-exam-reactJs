@@ -1,0 +1,99 @@
+.Quiz_multiple_options .container {
+  display: block;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.Quiz_multiple_options .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.Quiz_multiple_options .checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.Quiz_multiple_options .container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.Quiz_multiple_options .container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.Quiz_multiple_options .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.Quiz_multiple_options .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.Quiz_multiple_options .container .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+.option-index{
+    padding-right: 8px;
+}
+.Quiz_options{
+    color: #2c7be5!important;
+    display: block!important;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+.Quiz_Question{
+    color: #2c7be5!important;
+    display: block!important;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid #e3ebf6;
+}hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+/* .MuiButton-textSizeSmall{
+    color: #2c7be5 !important;
+    border: 1px solid #2c7be5 !important;
+} */
+.Quiz-MobileStepper{
+    padding: 1rem 1.5rem !important;
+    background-color: transparent;
+    border-top: 1px solid #edf2f9 !important;
+}
+.Quiz_que{
+    font-size: 17px;
+}

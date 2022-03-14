@@ -4,10 +4,9 @@ import Button from "@material-ui/core/Button";
 import Replay from "@mui/icons-material/Replay";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-
+import "./exam.css";
 const Exam = () => {
-  const [Quiz_Set1, setQuiz] = useState(
-    [
+  const [Quiz_Set1, setQuiz] = useState([
     {
       queno: "que_1",
       que_id: 1,
@@ -123,7 +122,7 @@ const Exam = () => {
 
   const onInputChange = (e) => {
     // e.preventDefault();
-    const  Quiz_Set  = Quiz_Set1;
+    const Quiz_Set = Quiz_Set1;
     const nexState = Quiz_Set.map((card) => {
       if (card.queno !== e.target.name) return card;
       return {
@@ -137,7 +136,7 @@ const Exam = () => {
         }),
       };
     });
-    setQuiz( nexState );
+    setQuiz(nexState);
     // console.log(nexState)
   };
 
@@ -200,7 +199,7 @@ const Exam = () => {
   };
   // console.log(state.Quiz_Set.length)
   return (
-    <div className="Quiz_render_container">
+    <div className="Quiz_render_container card">
       {state.booleanonsubmit ? (
         <div className="Quiz-DisplayResult">
           <h2> The score is {state.Total} Out Of 8 </h2>
@@ -224,25 +223,31 @@ const Exam = () => {
             Quiz_Set1.map((item, index) => {
               if (Math.abs(state.activeStep - index) <= 0) {
                 return (
-                  <div key={index}>
+                  <div className="card-body" key={index}>
+                    <h3 className="Quiz_Question">Question </h3>
                     <div className="Quiz_que">{item.que}</div>
-
-                    <div className="Quiz_options"> Options are : </div>
+                    <hr></hr>
+                    <h3 className="Quiz_options"> Answer Options </h3>
                     {item.options.map((ans, index_ans) => {
                       index_ans = index_ans + 1;
                       return (
                         <div key={index_ans} className="Quiz_multiple_options">
                           {/*----------------------------------------------------------- optionslarin indexini gosterir */}
-                          {/* {index_ans}]  */}
-                          {ans.que_options}
-                          <input
-                            key={index_ans}
-                            type="radio"
-                            name={item.queno}
-                            value={ans.que_options}
-                            checked={!!ans.selected}
-                            onChange={onInputChange}
-                          />
+                          <label className="container">
+                            <span className="option-index">{index_ans})</span>
+                            
+                            {ans.que_options}
+                            <input
+                              key={index_ans}
+                              type="radio"
+                              name={item.queno}
+                              value={ans.que_options}
+                              checked={!!ans.selected}
+                              onChange={onInputChange}
+                              id={index_ans}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
                         </div>
                       );
                     })}
