@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Replay from "@mui/icons-material/Replay";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import alertify from "alertifyjs";
 import "./exam.css";
 const Exam = () => {
   const [Quiz_Set1, setQuiz] = useState([
@@ -12,9 +13,9 @@ const Exam = () => {
       que_id: 1,
       que: "1) How many sides are equal in a scalene triangle?",
       options: [
-        { que_options: "3", selected: false },
-        { que_options: "2", selected: false },
-        { que_options: "0", selected: false },
+        { que_options: "3", selected: false, isTrueAnswer: false },
+        { que_options: "2", selected: false, isTrueAnswer: false },
+        { que_options: "0", selected: false, isTrueAnswer: true },
       ],
       ans: "0",
     },
@@ -23,9 +24,9 @@ const Exam = () => {
       que_id: 2,
       que: "2) The angles of a triangle are 90°,35° and 55°.What type of triangle is this?",
       options: [
-        { que_options: "Right Angled", selected: false },
-        { que_options: "Obtuse Angled", selected: false },
-        { que_options: "Acute Angled", selected: false },
+        { que_options: "Right Angled", selected: false, isTrueAnswer: true },
+        { que_options: "Obtuse Angled", selected: false, isTrueAnswer: false },
+        { que_options: "Acute Angled", selected: false, isTrueAnswer: false },
       ],
       ans: "Right Angled",
     },
@@ -34,9 +35,9 @@ const Exam = () => {
       que_id: 3,
       que: "3) The perimeter of an equilateral triangle is 24cm.Length of each side(in cm) is?",
       options: [
-        { que_options: "9", selected: false },
-        { que_options: "6", selected: false },
-        { que_options: "8", selected: false },
+        { que_options: "9", selected: false, isTrueAnswer: false },
+        { que_options: "6", selected: false, isTrueAnswer: false },
+        { que_options: "8", selected: false, isTrueAnswer: true },
       ],
       ans: "8",
     },
@@ -45,9 +46,9 @@ const Exam = () => {
       que_id: 4,
       que: "4) The sum of angles of a triangle is?",
       options: [
-        { que_options: "90", selected: false },
-        { que_options: "150", selected: false },
-        { que_options: "180", selected: false },
+        { que_options: "90", selected: false, isTrueAnswer: false },
+        { que_options: "150", selected: false, isTrueAnswer: false },
+        { que_options: "180", selected: false, isTrueAnswer: true },
       ],
       ans: "180",
     },
@@ -56,9 +57,9 @@ const Exam = () => {
       que_id: 5,
       que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
       options: [
-        { que_options: "Isosceles", selected: false },
-        { que_options: "Equilateral", selected: false },
-        { que_options: "Scalene", selected: false },
+        { que_options: "Isosceles", selected: false, isTrueAnswer: false },
+        { que_options: "Equilateral", selected: false, isTrueAnswer: true },
+        { que_options: "Scalene", selected: false, isTrueAnswer: false },
       ],
       ans: "Equilateral",
     },
@@ -67,9 +68,9 @@ const Exam = () => {
       que_id: 6,
       que: "6) What is a third angle for a triangle where angle1 = 57° and angle2 = 92° ?",
       options: [
-        { que_options: "45", selected: false },
-        { que_options: "60", selected: false },
-        { que_options: "31", selected: false },
+        { que_options: "45", selected: false, isTrueAnswer: false },
+        { que_options: "60", selected: false, isTrueAnswer: false },
+        { que_options: "31", selected: false, isTrueAnswer: true },
       ],
       ans: "31",
     },
@@ -78,9 +79,9 @@ const Exam = () => {
       que_id: 7,
       que: "7) Pythagoras theorem is applicable to which type of triangles?",
       options: [
-        { que_options: "Right", selected: false },
-        { que_options: "Acute", selected: false },
-        { que_options: "Obtuse", selected: false },
+        { que_options: "Right", selected: false, isTrueAnswer: true },
+        { que_options: "Acute", selected: false, isTrueAnswer: false },
+        { que_options: "Obtuse", selected: false, isTrueAnswer: false },
       ],
       ans: "Right",
     },
@@ -89,9 +90,9 @@ const Exam = () => {
       que_id: 8,
       que: "8) The triangle which has 2 sides congruent?",
       options: [
-        { que_options: "Equilateral", selected: false },
-        { que_options: "Isosceles", selected: false },
-        { que_options: "Scalene", selected: false },
+        { que_options: "Equilateral", selected: false, isTrueAnswer: false },
+        { que_options: "Isosceles", selected: false, isTrueAnswer: true },
+        { que_options: "Scalene", selected: false, isTrueAnswer: false },
       ],
       ans: "Isosceles",
     },
@@ -106,8 +107,34 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
-  const handleNext = () => {
-    setState({ activeStep: state.activeStep + 1 });
+  // console.log(state.booleanonsubmit)
+  const [stepAnswer, setStepAnswer] = useState();
+  // console.log(stepAnswer)
+  const handleNext = (e) => {
+    // setState({ activeStep: state.activeStep + 1 });
+    let list = Quiz_Set1;
+    list.map((item, key) => {
+      
+      if (Math.abs(state.activeStep - key) <= 0) {
+        // if(!item.options[key].selected){
+        //   alertify.error("Cavablardan birini secin");
+        // }else {
+        //   setState({ activeStep: state.activeStep + 1 });
+        // }
+        if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
+          alertify.error("Cavablardan birini secin");
+        }
+       
+        item.options.map((anslist, key) => {
+          if (anslist.selected===true) {
+            setState({ activeStep: state.activeStep + 1 });
+          } else {
+            // alertify.error("Cavablardan birini secin");
+            // setStepAnswer({...item})
+          }
+        });
+      }
+    });
   };
   const handleBack = () => {
     setState({ activeStep: state.activeStep - 1 });
@@ -155,6 +182,12 @@ const Exam = () => {
             //   console.log("===>",anslist.que_options,item.ans)
             count = count + 1;
           }
+          if (anslist.selected === anslist.isTrueAnswer) {
+            console.log("cavab dogrudu");
+            // count = count + 1;
+          } else {
+            console.log("cavab sevhdi");
+          }
         } else {
           notattempcount = notattempcount + 1;
         }
@@ -165,13 +198,14 @@ const Exam = () => {
     //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam.
     // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
     if (notattempcount <= 24 && notattempcount > 16) {
-      console.log(notattempcount);
-      setState({ booleanonsubmit: false, Total: count });
-      setState({
-        catchmsg: "Please attempt all questions",
-        errormsg: "error",
-        open: true,
-      });
+      // console.log(notattempcount);
+      // setState({ booleanonsubmit: false, Total: count });
+      alertify.error("Butun xanalari doldurun");
+      // setState({
+      //   catchmsg: "Please attempt all questions",
+      //   errormsg: "error",
+      //   open: true,
+      // });
     } else {
       setState({ booleanonsubmit: true, Total: count });
     }
@@ -235,7 +269,7 @@ const Exam = () => {
                           {/*----------------------------------------------------------- optionslarin indexini gosterir */}
                           <label className="container">
                             <span className="option-index">{index_ans})</span>
-                            
+
                             {ans.que_options}
                             <input
                               key={index_ans}
