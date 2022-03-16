@@ -9,7 +9,7 @@ import "./exam.css";
 const Exam = () => {
   const [Quiz_Set1, setQuiz] = useState([
     {
-      queno: "que_1",
+      queno: "0",
       que_id: 1,
       que: "1) How many sides are equal in a scalene triangle?",
       options: [
@@ -20,7 +20,7 @@ const Exam = () => {
       ans: "0",
     },
     {
-      queno: "que_2",
+      queno: "1",
       que_id: 2,
       que: "2) The angles of a triangle are 90°,35° and 55°.What type of triangle is this?",
       options: [
@@ -31,7 +31,7 @@ const Exam = () => {
       ans: "Right Angled",
     },
     {
-      queno: "que_3",
+      queno: "2",
       que_id: 3,
       que: "3) The perimeter of an equilateral triangle is 24cm.Length of each side(in cm) is?",
       options: [
@@ -42,7 +42,7 @@ const Exam = () => {
       ans: "8",
     },
     {
-      queno: "que_4",
+      queno: "3",
       que_id: 4,
       que: "4) The sum of angles of a triangle is?",
       options: [
@@ -53,7 +53,7 @@ const Exam = () => {
       ans: "180",
     },
     {
-      queno: "que_5",
+      queno: "4",
       que_id: 5,
       que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
       options: [
@@ -64,7 +64,7 @@ const Exam = () => {
       ans: "Equilateral",
     },
     {
-      queno: "que_6",
+      queno: "5",
       que_id: 6,
       que: "6) What is a third angle for a triangle where angle1 = 57° and angle2 = 92° ?",
       options: [
@@ -75,7 +75,7 @@ const Exam = () => {
       ans: "31",
     },
     {
-      queno: "que_7",
+      queno: "6",
       que_id: 7,
       que: "7) Pythagoras theorem is applicable to which type of triangles?",
       options: [
@@ -86,7 +86,7 @@ const Exam = () => {
       ans: "Right",
     },
     {
-      queno: "que_8",
+      queno: "7",
       que_id: 8,
       que: "8) The triangle which has 2 sides congruent?",
       options: [
@@ -107,32 +107,30 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
-  // console.log(state.booleanonsubmit)
+  // console.log(state.activeStep);
   const [stepAnswer, setStepAnswer] = useState();
   // console.log(stepAnswer)
   const handleNext = (e) => {
-    // setState({ activeStep: state.activeStep + 1 });
+    setState({ activeStep: state.activeStep + 1 });
     let list = Quiz_Set1;
     list.map((item, key) => {
-      
       if (Math.abs(state.activeStep - key) <= 0) {
         // if(!item.options[key].selected){
         //   alertify.error("Cavablardan birini secin");
         // }else {
         //   setState({ activeStep: state.activeStep + 1 });
         // }
-        if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
-          alertify.error("Cavablardan birini secin");
-        }
-       
-        item.options.map((anslist, key) => {
-          if (anslist.selected===true) {
-            setState({ activeStep: state.activeStep + 1 });
-          } else {
-            // alertify.error("Cavablardan birini secin");
-            // setStepAnswer({...item})
-          }
-        });
+        // if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
+        //   alertify.error("Cavablardan birini secin");
+        // }
+        // item.options.map((anslist, key) => {
+        //   if (anslist.selected===true) {
+        //     setState({ activeStep: state.activeStep + 1 });
+        //   } else {
+        //     alertify.error("Cavablardan birini secin");
+        //     setStepAnswer({...item})
+        //   }
+        // });
       }
     });
   };
@@ -164,6 +162,24 @@ const Exam = () => {
       };
     });
     setQuiz(nexState);
+    let list = Quiz_Set1;
+    list.map((item, key) => {
+      if (Math.abs(state.activeStep - key) <= 0) {
+        // if(!item.options[key].selected){
+        //   alertify.error("Cavablardan birini secin");
+        // }else {
+        //   setState({ activeStep: state.activeStep + 1 });
+        // }
+        // if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
+        //   alertify.error("Cavablardan birini secin");
+        // }
+        item.options.map((anslist, key) => {
+          if (anslist.selected===true) {
+            setStepAnswer(true);
+          } 
+        });
+    }
+    })
     // console.log(nexState)
   };
 
@@ -211,7 +227,10 @@ const Exam = () => {
     }
   };
   //------------------------------------------------------------------------------------------------------------------------
-
+  const getQueno = (e) => {
+    setState({ activeStep: parseInt(e.target.name) });
+    // console.log(e.target.name)
+  };
   const Snackbarrender = () => {
     return state.open ? (
       <Snackbar
@@ -294,8 +313,8 @@ const Exam = () => {
 
           <div className="Quiz-MobileStepper">
             <MobileStepper
-              // variant="dots"
-              variant="text"
+              variant="dots"
+              // variant="text"
               // variant="progress"
               steps={Quiz_Set1.length}
               position="static"
@@ -328,6 +347,33 @@ const Exam = () => {
           </div>
         </div>
       )}
+      <div>
+        <ul>
+          {Quiz_Set1 &&
+            Quiz_Set1.map((item, index) => {
+              return (
+                
+                <li
+                  className={
+                    item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true? "text-danger" : "text-primary"
+                  }
+                >
+                  {console.log(item.options)}
+                  {item.queno}
+                  <input
+                    type="radio"
+                    value={item.queno}
+                    name={item.queno}
+                    onClick={getQueno}
+
+                    // checked={!!opt.selected}
+                  />
+                </li>
+              );
+ 
+            })}
+        </ul>
+      </div>
       {Snackbarrender()}
     </div>
   );
