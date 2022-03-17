@@ -1,11 +1,14 @@
-import { Component, useState } from "react";
+import {  useState } from "react";
 import { MobileStepper } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import Replay from "@mui/icons-material/Replay";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+import {  Row, Col,  } from "antd";
 import alertify from "alertifyjs";
 import "./exam.css";
+import ExamHeader from "./ExamHeader";
 const Exam = () => {
   const [Quiz_Set1, setQuiz] = useState([
     {
@@ -97,7 +100,6 @@ const Exam = () => {
       ans: "Isosceles",
     },
   ]);
-  // console.log(Quiz_Set1)
   const [state, setState] = useState({
     activeStep: 0,
     Quiz_Set: Quiz_Set1,
@@ -107,33 +109,11 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
-  // console.log(state.activeStep);
   const [stepAnswer, setStepAnswer] = useState();
-  // console.log(stepAnswer)
   const handleNext = (e) => {
     setState({ activeStep: state.activeStep + 1 });
-    let list = Quiz_Set1;
-    // list.map((item, key) => {
-    //   if (Math.abs(state.activeStep - key) <= 0) {
-        // if(!item.options[key].selected){
-        //   alertify.error("Cavablardan birini secin");
-        // }else {
-        //   setState({ activeStep: state.activeStep + 1 });
-        // }
-        // if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
-        //   alertify.error("Cavablardan birini secin");
-        // }
-        // item.options.map((anslist, key) => {
-        //   if (anslist.selected===true) {
-        //     setState({ activeStep: state.activeStep + 1 });
-        //   } else {
-        //     alertify.error("Cavablardan birini secin");
-        //     setStepAnswer({...item})
-        //   }
-        // });
-      // }
-    // });
   };
+
   const handleBack = () => {
     setState({ activeStep: state.activeStep - 1 });
   };
@@ -174,12 +154,12 @@ const Exam = () => {
         //   alertify.error("Cavablardan birini secin");
         // }
         item.options.map((anslist, key) => {
-          if (anslist.selected===true) {
+          if (anslist.selected === true) {
             setStepAnswer(true);
-          } 
+          }
         });
-    }
-    })
+      }
+    });
     // console.log(nexState)
   };
 
@@ -228,8 +208,8 @@ const Exam = () => {
   };
   //------------------------------------------------------------------------------------------------------------------------
   const getQueno = (e) => {
-    setState({ activeStep: parseInt(e.target.name) });
-    // console.log(e.target.name)
+    setState({ activeStep: parseInt(e.target.id) });
+    // console.log(e.target.id)
   };
   const Snackbarrender = () => {
     return state.open ? (
@@ -250,133 +230,146 @@ const Exam = () => {
       </Snackbar>
     ) : null;
   };
-  // console.log(state.Quiz_Set.length)
   return (
-    <div className="Quiz_render_container card">
-      {state.booleanonsubmit ? (
-        <div className="Quiz-DisplayResult">
-          <h2> The score is {state.Total} Out Of 8 </h2>
-          <Button
-            onClick={() => {
-              setState({
-                booleanonsubmit: false,
-                activeStep: 0,
-                Quiz_Set1: Quiz_Set1,
-                Total: 0,
-              });
-            }}
-          >
-            {" "}
-            <Replay /> Try again{" "}
-          </Button>
-        </div>
-      ) : (
-        <div className="Quiz_container_display">
-          {Quiz_Set1 &&
-            Quiz_Set1.map((item, index) => {
-              if (Math.abs(state.activeStep - index) <= 0) {
-                return (
-                  <div className="card-body" key={index}>
-                    <h3 className="Quiz_Question">Question </h3>
-                    <div className="Quiz_que">{item.que}</div>
-                    <hr></hr>
-                    <h3 className="Quiz_options"> Answer Options </h3>
-                    {item.options.map((ans, index_ans) => {
-                      index_ans = index_ans + 1;
-                      return (
-                        <div key={index_ans} className="Quiz_multiple_options">
-                          {/*----------------------------------------------------------- optionslarin indexini gosterir */}
-                          <label className="container">
-                            <span className="option-index">{index_ans})</span>
+    <>
+      <ExamHeader />
+      <div className="Quiz_render_container card">
+        {state.booleanonsubmit ? (
+          <div className="Quiz-DisplayResult">
+            <h2> The score is {state.Total} Out Of 8 </h2>
+            <Button
+              onClick={() => {
+                setState({
+                  booleanonsubmit: false,
+                  activeStep: 0,
+                  Quiz_Set1: Quiz_Set1,
+                  Total: 0,
+                });
+              }}
+            >
+              {" "}
+              <Replay /> Try again{" "}
+            </Button>
+          </div>
+        ) : (
+          <div className="Quiz_container_display">
+            {Quiz_Set1 &&
+              Quiz_Set1.map((item, index) => {
+                if (Math.abs(state.activeStep - index) <= 0) {
+                  return (
+                    <div className="card-body" key={index}>
+                      <h3 className="Quiz_Question">Question </h3>
+                      <div className="Quiz_que">{item.que}</div>
+                      <hr></hr>
+                      <h3 className="Quiz_options"> Answer Options </h3>
+                      {item.options.map((ans, index_ans) => {
+                        index_ans = index_ans + 1;
+                        return (
+                          <div
+                            key={index_ans}
+                            className="Quiz_multiple_options"
+                          >
+                            {/*----------------------------------------------------------- optionslarin indexini gosterir */}
+                            <label className="container">
+                              <span className="option-index">{index_ans})</span>
 
-                            {ans.que_options}
-                            <input
-                              key={index_ans}
-                              type="radio"
-                              name={item.queno}
-                              value={ans.que_options}
-                              checked={!!ans.selected}
-                              onChange={onInputChange}
-                              id={index_ans}
-                            />
-                            <span className="checkmark"></span>
-                          </label>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
+                              {ans.que_options}
+                              <input
+                                key={index_ans}
+                                type="radio"
+                                name={item.queno}
+                                value={ans.que_options}
+                                checked={!!ans.selected}
+                                onChange={onInputChange}
+                                id={index_ans}
+                              />
+                              <span className="checkmark"></span>
+                            </label>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
 
-          <div className="Quiz-MobileStepper">
-            <MobileStepper
-              variant="dots"
-              // variant="text"
-              // variant="progress"
-              steps={Quiz_Set1.length}
-              position="static"
-              activeStep={state.activeStep}
-              nextButton={
-                state.activeStep === 7 ? (
-                  <Button size="small" onClick={onsubmit}>
-                    Submit
-                  </Button>
-                ) : (
+            <div className="Quiz-MobileStepper">
+              <MobileStepper
+                variant="dots"
+                // variant="text"
+                // variant="progress"
+                steps={Quiz_Set1.length}
+                position="static"
+                activeStep={state.activeStep}
+                nextButton={
+                  state.activeStep === 7 ? (
+                    <Button size="small" onClick={onsubmit}>
+                      Submit
+                    </Button>
+                  ) : (
+                    <Button
+                      size="small"
+                      onClick={handleNext}
+                      disabled={state.activeStep === Quiz_Set1.length}
+                    >
+                      Next
+                    </Button>
+                  )
+                }
+                backButton={
                   <Button
                     size="small"
-                    onClick={handleNext}
-                    disabled={state.activeStep === Quiz_Set1.length}
+                    onClick={handleBack}
+                    disabled={state.activeStep === 0}
                   >
-                    Next
+                    Back
                   </Button>
-                )
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={state.activeStep === 0}
-                >
-                  Back
-                </Button>
-              }
-            />
+                }
+              />
+            </div>
           </div>
-        </div>
-      )}
-      <div>
-        <ul>
+        )}
+
+        {Snackbarrender()}
+      </div>
+      <Card className="card-transaction">
+        <CardHeader className="cardHeaderCustom card-header">
+          <CardTitle tag="h4">Questions</CardTitle>
+        </CardHeader>
+        <CardBody
+          style={{ paddingTop: "1rem"}}
+        >
+          <Row  justify="start">
           {Quiz_Set1 &&
             Quiz_Set1.map((item, index) => {
-              console.log(index+1)
               return (
-                
-                <li
-                key={index}
+                <Col key={index} className="bg-light border"   sm={{span:6}} xs={{span: 6}} md={{span:2}} xl={{span:2}} lg={{span:2}}>
+                <button
+                  onClick={getQueno}
+                  id={index}
+                  type="button"
                   className={
-                    item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true? "text-danger" : "text-primary"
+                    item.options[0].selected !== true &&
+                    item.options[1].selected !== true &&
+                    item.options[2].selected !== true
+                      ? "btn-outline-secondary"
+                      : "btn-outline-primary"
                   }
                 >
-                  {index+1}
-                  <input
-                    type="radio"
-                    // value={index+1}
-                    name={index}
-                    onClick={getQueno}
-
-                    // checked={!!opt.selected}
-                  />
-                </li>
+                 {index + 1}
+                </button>
+              </Col>
+             
               );
- 
             })}
-        </ul>
-      </div>
-      {Snackbarrender()}
-    </div>
+        
+          </Row>
+        </CardBody>
+      </Card>
+     
+    </>
   );
 };
 

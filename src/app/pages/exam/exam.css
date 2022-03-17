@@ -60,40 +60,95 @@
   border-radius: 50%;
   background: white;
 }
-.option-index{
-    padding-right: 8px;
+.option-index {
+  padding-right: 8px;
 }
-.Quiz_options{
-    color: #2c7be5!important;
-    display: block!important;
-    font-weight: bold;
-    margin-bottom: 24px;
+.Quiz_options {
+  color: #2c7be5 !important;
+  display: block !important;
+  font-weight: bold;
+  margin-bottom: 24px;
 }
-.Quiz_Question{
-    color: #2c7be5!important;
-    display: block!important;
-    font-weight: bold;
-    margin-bottom: 13px;
+.Quiz_Question {
+  color: #2c7be5 !important;
+  display: block !important;
+  font-weight: bold;
+  margin-bottom: 13px;
 }
 hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0;
-    border-top: 1px solid #e3ebf6;
-}hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #e3ebf6;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 /* .MuiButton-textSizeSmall{
     color: #2c7be5 !important;
     border: 1px solid #2c7be5 !important;
 } */
-.Quiz-MobileStepper{
-    padding: 1rem 1.5rem !important;
-    background-color: transparent;
-    border-top: 1px solid #edf2f9 !important;
+.Quiz-MobileStepper {
+  padding: 1rem 1.5rem !important;
+  background-color: transparent;
+  border-top: 1px solid #edf2f9 !important;
 }
-.Quiz_que{
-    font-size: 17px;
+.Quiz_que {
+  font-size: 17px;
+}
+.btn-outline-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  width: auto !important;
+  margin-top: 0 !important;
+  margin-left: 10px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  border-radius: 0.25rem;
+
+  background-color: transparent;
+  border: 1px solid #d2ddec !important;
+  color: #6e84a3;
+  border-color: #6e84a3;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-outline-secondary::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0c8";
+  margin-right: 5px;
+  padding: 1px 5px;
+}
+.btn-outline-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  width: auto !important;
+  margin-top: 0 !important;
+  margin-left: 10px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  border-radius: 0.25rem;
+
+  background-color: transparent;
+  border: 1px solid #1a68d1 !important;
+  color: #6e84a3;
+  border-color: #6e84a3;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-outline-primary::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f14a";
+  margin-right: 5px;
+  padding: 1px 5px;
 }
