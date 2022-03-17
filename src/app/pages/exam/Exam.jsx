@@ -113,8 +113,8 @@ const Exam = () => {
   const handleNext = (e) => {
     setState({ activeStep: state.activeStep + 1 });
     let list = Quiz_Set1;
-    list.map((item, key) => {
-      if (Math.abs(state.activeStep - key) <= 0) {
+    // list.map((item, key) => {
+    //   if (Math.abs(state.activeStep - key) <= 0) {
         // if(!item.options[key].selected){
         //   alertify.error("Cavablardan birini secin");
         // }else {
@@ -131,8 +131,8 @@ const Exam = () => {
         //     setStepAnswer({...item})
         //   }
         // });
-      }
-    });
+      // }
+    // });
   };
   const handleBack = () => {
     setState({ activeStep: state.activeStep - 1 });
@@ -351,19 +351,20 @@ const Exam = () => {
         <ul>
           {Quiz_Set1 &&
             Quiz_Set1.map((item, index) => {
+              console.log(index+1)
               return (
                 
                 <li
+                key={index}
                   className={
                     item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true? "text-danger" : "text-primary"
                   }
                 >
-                  {console.log(item.options)}
-                  {item.queno}
+                  {index+1}
                   <input
                     type="radio"
-                    value={item.queno}
-                    name={item.queno}
+                    // value={index+1}
+                    name={index}
                     onClick={getQueno}
 
                     // checked={!!opt.selected}
