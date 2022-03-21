@@ -13,6 +13,7 @@ import UserProfile from "./app/pages/profile/UserProfile";
 import Information from "./app/pages/profile/Information";
 import UpdateProfile from "./app/pages/profile/UpdateProfile";
 import Exam from "./app/pages/exam/Exam";
+import SelfStudyCourse from "./app/pages/selfStudyCourse/SelfStudyCourse";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 //  import 'bootstrap-css-only/css/bootstrap.min.css';
 //   import 'mdbreact/dist/css/mdb.css';
@@ -27,6 +28,9 @@ function App() {
         <DashboardLayout>
           <Route exact path="/home">
             <DashBoard />
+          </Route>
+          <Route exact path="/course">
+            <SelfStudyCourse />
           </Route>
           <Route exact path="/SelfStudyCourse">
             <SelfStudyCoursesCategory />
@@ -47,9 +51,9 @@ function App() {
               </UserProfile>
             </Route>
             <Route path="/update-profile">
-            <UserProfile>
-              <UpdateProfile />
-            </UserProfile>
+              <UserProfile>
+                <UpdateProfile />
+              </UserProfile>
             </Route>
           </Route>
         </DashboardLayout>

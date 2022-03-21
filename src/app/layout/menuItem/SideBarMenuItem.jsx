@@ -47,11 +47,14 @@ const SideBarMenuItem = () => {
           <Link to="/SelfStudyCourse">Seld Study Course Category</Link>
         </Menu.Item>
         <Menu.Item key="8">
-        <Link to="/exam">Exam</Link>
+          <Link to="/exam">Exam</Link>
+        </Menu.Item>
+        <Menu.Item key="9">
+          <Link to="/course">Seld Study Course</Link>
         </Menu.Item>
       </SubMenu>
       <Menu.Item
-        key="9"
+        key="10"
         icon={
           <FileOutlined
             style={{ fontSize: "20px", margin: "0px 6px 0px 0px" }}
@@ -61,6 +64,7 @@ const SideBarMenuItem = () => {
       >
         <Link to="/courseDetails">Course Details</Link>
       </Menu.Item>
+  
     </Menu>
   );
 };

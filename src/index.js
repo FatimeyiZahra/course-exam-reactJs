@@ -9,6 +9,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "alertifyjs/build/css/alertify.min.css";
+import "video-react/dist/video-react.css";
 
 const store = createStore(
   rootReducers,
