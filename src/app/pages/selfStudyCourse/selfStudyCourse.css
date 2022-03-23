@@ -1,4 +1,14 @@
-.video-react .video-react-big-play-button {
+/* .video-react .video-react-big-play-button {
     top: 45% !important;
     left: 45% !important;
-}
+} */
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
