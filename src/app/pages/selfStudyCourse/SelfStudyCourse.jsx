@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import VideoPlayer from "react-video-js-player";
 import { Row, Col } from "antd";
 import "antd/dist/antd.min.css";
@@ -18,41 +18,56 @@ const SelfStudyCourse = () => {
   // player = {};
   const [state, setfirst] = useState({
     video: {
-      src: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+      src: "https://www.w3schools.com/html/mov_bbb.mp4",
       poster: "https://video-react.js.org/assets/poster.png",
     },
   });
-  const [duration, setduration] = useState();
-  console.log(duration);
+  const [videoSeeked, setVideoSeeked] = useState(false);
+  const [videoEnd, setVideoEnd] = useState();
+  const [videoWatched, setVideoWatched] = useState();
 
-  const onVideoEnd = () => {
-    console.log("Video ended");
-  };
-  const onVideoTimeUpdate = (duration) => {
-    console.log("Time updated: ", duration);
-  };
+  // console.log(videoSeeked);
 
-  const onPlayerReady = (player) => {
-    console.log("Player is ready: ", player);
-    setduration(player.cache_);
-    // this.player = player;
-  };
-
-  const onVideoPlay = (duration) => {
-    console.log("Video played at: ", duration);
-  };
-
-  const onVideoPause = (duration) => {
-    console.log("Video paused at: ", duration);
-  };
+  // console.log(videoEnd);
 
   const onVideoSeeking = (duration) => {
+    setVideoSeeked(true);
     console.log("Video seeking: ", duration);
   };
 
-  const onVideoSeeked = (from, to) => {
-    console.log(`Video seeked from ${from} to ${to}`);
+  useEffect(() => {
+    if (videoSeeked === true) {
+      setVideoWatched(false);
+      // console.log("seeked");
+    }
+    if (videoSeeked === false && videoEnd === true) {
+      setVideoWatched(true);
+    }
+  }, [videoEnd]);
+  const onVideoEnd = () => {
+    setVideoEnd(true);
   };
+  // const onVideoTimeUpdate = (duration) => {
+  //   console.log("Time updated: ", duration);
+  // };
+
+  const onPlayerReady = (player) => {
+    console.log("Player is ready: ", player);
+    // this.player = player;
+  };
+
+  // const onVideoPlay = (duration) => {
+  //   console.log("Video played at: ", duration);
+  // };
+
+  // const onVideoPause = (duration) => {
+  //   console.log("Video paused at: ", duration);
+  // };
+
+  // const onVideoSeeked = (from, to) => {
+  //   setVideoSeeked(true);
+  //   console.log(`Video seeked from ${from} to ${to}`);
+  // };
 
   return (
     <div style={{ marginLeft: "15px" }}>
@@ -62,16 +77,17 @@ const SelfStudyCourse = () => {
             <VideoPlayer
               className="videoResponsive"
               controls={true}
+              // src={{ type: `video/mp4`, src: state.video.src }}
               src={state.video.src}
               poster={state.video.poster}
               width="720"
               height="420"
               onReady={onPlayerReady}
-              onPlay={onVideoPlay}
-              onPause={onVideoPause}
-              onTimeUpdate={onVideoTimeUpdate}
+              // onPlay={onVideoPlay}
+              // onPause={onVideoPause}
+              // onTimeUpdate={onVideoTimeUpdate}
               onSeeking={onVideoSeeking}
-              onSeeked={onVideoSeeked}
+              // onSeeked={onVideoSeeked}
               onEnd={onVideoEnd}
             />
           </div>
@@ -96,7 +112,13 @@ const SelfStudyCourse = () => {
                   extra="0"
                 >
                   <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
+                    <li
+                      className={
+                        videoWatched
+                          ? "course-unit-list-sub-unit-title text-green"
+                          : "course-unit-list-sub-unit-title"
+                      }
+                    >
                       What is Safety Management System (Sms)
                     </li>
                     <li className="course-unit-list-sub-unit-title">
