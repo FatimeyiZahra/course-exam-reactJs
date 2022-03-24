@@ -22,6 +22,7 @@ const SelfStudyCourse = () => {
       poster: "https://video-react.js.org/assets/poster.png",
     },
   });
+  // https://static.videezy.com/system/resources/previews/000/008/445/original/Dark_Haired_Girl_in_disbelief_1.mp4
   const [videoSeeked, setVideoSeeked] = useState(false);
   const [videoEnd, setVideoEnd] = useState();
   const [videoWatched, setVideoWatched] = useState();
