@@ -1,5 +1,4 @@
 import "../cardTransactions/index.css"
-import { useState } from "react";
 // ** Reactstrap Imports
 import {
   Card,
@@ -12,7 +11,6 @@ import {
 
 
 const CardBrowserState = ({ trackBgColor }) => {
-  const [menuOpen, setMenu] = useState(false);
   const statesArr = [
     {
       title: 'Google Chrome',

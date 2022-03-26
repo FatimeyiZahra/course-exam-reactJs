@@ -1,12 +1,9 @@
 import "../cardTransactions/index.css";
-import { useState } from "react";
-import { Badge, Space, Switch } from "antd";
 
 // ** Reactstrap Imports
 import { Card, CardBody, CardText, CardTitle, CardHeader } from "reactstrap";
 
 const CardWithBadge = ({ trackBgColor }) => {
-  const [menuOpen, setMenu] = useState(false);
   const statesArr = [
     {
       title: "Google Chrome",

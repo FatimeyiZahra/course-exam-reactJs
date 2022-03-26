@@ -3,7 +3,7 @@ import "antd/dist/antd.min.css";
 import "./index.css";
 import { Row, Col } from "antd";
 import Statistics from "../../component/statistics/Statistics";
-import CardTransactions from "../../component/cardTransactions/CardTransactions";
+// import CardTransactions from "../../component/cardTransactions/CardTransactions";
 import CardBrowserState from "../../component/cardBrowserState/CardBrowserState";
 import CardWithBadge from "../../component/cardWithBadge/CardWithBadge";
 import TimeLine from "../../component/timeLine/TimeLine";
@@ -16,9 +16,9 @@ const DashBoard = () => {
         <Statistics />
       </Row>
       <Row gutter={[16, 16]}>
-        <Col xs={24} md={8} lg={8}>
+        {/* <Col xs={24} md={8} lg={8}>
           <CardTransactions />
-        </Col>
+        </Col> */}
         <Col xs={24} md={8} lg={8}>
           <CardBrowserState />
         </Col>

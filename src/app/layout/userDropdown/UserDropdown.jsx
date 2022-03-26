@@ -4,7 +4,7 @@ import { Avatar } from "antd";
 import "antd/dist/antd.min.css";
 
 import defaultAvatar from "../../../assets/image/avatar/avatar.png";
-import { Menu, Dropdown, Button, Modal, Form, Input, Radio } from "antd";
+import { Menu, Dropdown} from "antd";
 import { Link } from "react-router-dom";
 import { changeContactModal } from "../../../redux/actions/modal";
 import { useDispatch } from "react-redux";

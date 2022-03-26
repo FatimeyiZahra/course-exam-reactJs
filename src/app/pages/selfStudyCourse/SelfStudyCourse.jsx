@@ -3,8 +3,8 @@ import VideoPlayer from "react-video-js-player";
 import { Row, Col } from "antd";
 import "antd/dist/antd.min.css";
 import { Collapse } from "antd";
-import { Card, CardBody, CardText, CardTitle, CardHeader } from "reactstrap";
-import { SettingOutlined } from "@ant-design/icons";
+import { Card, CardBody,  CardTitle, CardHeader } from "reactstrap";
+import { PlusOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import "./selfStudyCourse.css";
 const { TabPane } = Tabs;
@@ -69,7 +69,14 @@ const SelfStudyCourse = () => {
   //   setVideoSeeked(true);
   //   console.log(`Video seeked from ${from} to ${to}`);
   // };
-
+  const genExtra = () => (
+    <PlusOutlined
+      onClick={event => {
+        // If you don't want click extra trigger collapse, you can prevent this:
+        event.stopPropagation();
+      }}
+    />
+  );
   return (
     <div style={{ marginLeft: "15px" }}>
       <Row gutter={[16, 16]}>
@@ -83,6 +90,7 @@ const SelfStudyCourse = () => {
               poster={state.video.poster}
               width="720"
               height="420"
+              hideControls={['playbackrates']}
               onReady={onPlayerReady}
               // onPlay={onVideoPlay}
               // onPause={onVideoPause}
@@ -95,8 +103,8 @@ const SelfStudyCourse = () => {
         </Col>
         <Col xs={24} md={8} lg={8}>
           <Card
-            className="card-browser-states no-shadow"
-            // style={{ height: "507px", overflowY: "auto" }}
+            className="card-course-content no-shadow"
+            style={{ height: "420px", overflowY: "auto",marginBottom:"0" }}
           >
             <CardHeader className="cardHeaderCustom">
               <div>
@@ -110,7 +118,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="INTRODUCTION"
                   key="1"
-                  extra="0"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li
@@ -141,7 +149,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="SAFETY MANAGEMENT SYSTEM"
                   key="2"
-                  extra="1"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li className="course-unit-list-sub-unit-title">
@@ -166,7 +174,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY "
                   key="3"
-                  extra="5"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li className="course-unit-list-sub-unit-title">
@@ -191,7 +199,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY "
                   key="4"
-                  extra="5"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li className="course-unit-list-sub-unit-title">
@@ -216,7 +224,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="SAFETY RISK MANAGEMENT - HAZARD IDENTIFICATION - HAZARD IDENTIFICATION METHODS"
                   key="5"
-                  extra="23"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li className="course-unit-list-sub-unit-title">
@@ -241,7 +249,7 @@ const SelfStudyCourse = () => {
                   showArrow={false}
                   header="THE SAFETY PROMOTION "
                   key="6"
-                  extra="8"
+                  // extra={genExtra()}
                 >
                   <ul className="course-unit-list">
                     <li className="course-unit-list-sub-unit-title">

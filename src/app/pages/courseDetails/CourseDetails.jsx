@@ -5,7 +5,7 @@ import "./courseDetails.css";
 import CourseDetailsTable from "../../component/courseDetailsTable/CourseDetailsTable";
 import CourseDetailsHeader from "./CourseDetailsHeader";
 import { Collapse } from "antd";
-import { Card, CardBody, CardText, CardTitle, CardHeader } from "reactstrap";
+import { Card, CardBody,  CardTitle, CardHeader } from "reactstrap";
 import { SettingOutlined } from '@ant-design/icons';
 const { Panel } = Collapse;
 
@@ -43,7 +43,7 @@ const CourseDetails = () => {
           <CourseDetailsTable />
         </Col>
         <Col xs={24} md={8} lg={8}>
-          <Card className="card-browser-states no-shadow">
+          <Card className="card-course-content-states no-shadow">
             <CardHeader className="cardHeaderCustom">
               <div>
                 <CardTitle tag="h4">Course Units</CardTitle>

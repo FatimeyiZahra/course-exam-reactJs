@@ -143,7 +143,7 @@ const Exam = () => {
     });
     setQuiz(nexState);
     let list = Quiz_Set1;
-    list.map((item, key) => {
+    list.forEach((item, key) => {
       if (Math.abs(state.activeStep - key) <= 0) {
         // if(!item.options[key].selected){
         //   alertify.error("Cavablardan birini secin");
@@ -153,7 +153,7 @@ const Exam = () => {
         // if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
         //   alertify.error("Cavablardan birini secin");
         // }
-        item.options.map((anslist, key) => {
+        item.options.forEach((anslist, key) => {
           if (anslist.selected === true) {
             setStepAnswer(true);
           }
@@ -169,8 +169,8 @@ const Exam = () => {
     let count = 0;
     let notattempcount = 0;
 
-    list.map((item, key) => {
-      item.options.map((anslist, key) => {
+    list.forEach((item, key) => {
+      item.options.forEach((anslist, key) => {
         //  console.log("anslist.selected===>",anslist.selected)
         if (anslist.selected === true) {
           console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
@@ -340,6 +340,7 @@ const Exam = () => {
         </CardHeader>
         <CardBody
           style={{ paddingTop: "1rem"}}
+          className="card-body-exam-options"
         >
           <Row  justify="start">
           {Quiz_Set1 &&

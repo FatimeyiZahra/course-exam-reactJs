@@ -1,6 +1,3 @@
-// ** Icons Imports
-import * as Icon from "react-feather";
-// ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
 import { Timeline } from "antd";
 import { SmileOutlined } from "@ant-design/icons";

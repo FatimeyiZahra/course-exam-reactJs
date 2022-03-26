@@ -91,16 +91,16 @@
 .p-0{
   padding: 0 !important;
 }
-.course-unit-list{
+.card-course-content-states .course-unit-list{
   padding: 0;
 }
-.course-unit-list li{
+.card-course-content-states .course-unit-list li{
   list-style: none;
 }
-.course-unit-list-title:first-child{
+.card-course-content-states .course-unit-list-title:first-child{
   border-top: 1px solid #edf2f9;
 }
-.course-unit-list-title {
+.card-course-content-states .course-unit-list-title {
   background: #f9fbfd;
   /* padding: 0.5rem 1rem; */
   border: 1px solid #edf2f9;
@@ -109,18 +109,18 @@
    font-weight: 600; 
   margin: 0; 
 }
-.course-unit-list-sub-unit-title {
+.card-course-content-states .course-unit-list-sub-unit-title {
   padding: 0.5rem 1rem;
   color: #5e646c;
   font-size: .625rem;
   font-weight: 600;
 }
-.ant-collapse-content {
+.card-course-content-states.ant-collapse-content {
   color: rgba(0, 0, 0, 0.85);
   background-color: #fff !important;
   border-top: 1px solid #d9d9d9;
 }
-.ant-collapse-extra{
+.card-course-content-states .ant-collapse-extra{
   color: #fff;
   background-color: #6e84a3;
   display: inline-block;
@@ -133,6 +133,6 @@
   border-radius: 0.375rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.card-browser-states.no-shadow{
+.card-course-content-states .card-browser-states.no-shadow{
   box-shadow: none !important;
 }

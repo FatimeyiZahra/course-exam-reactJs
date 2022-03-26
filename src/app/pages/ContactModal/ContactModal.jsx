@@ -10,7 +10,6 @@ import Select from "react-select";
 
 // ** Third Party Components
 import * as yup from "yup";
-import { Check } from "react-feather";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm, Controller } from "react-hook-form";

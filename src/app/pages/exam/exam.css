@@ -98,7 +98,7 @@ hr {
 .Quiz_que {
   font-size: 17px;
 }
-.btn-outline-secondary {
+.card-body-exam-options .btn-outline-secondary {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,13 +119,13 @@ hr {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.btn-outline-secondary::before {
+.card-body-exam-options .btn-outline-secondary::before {
   font-family: "Font Awesome 5 Free";
   content: "\f0c8";
   margin-right: 5px;
   padding: 1px 5px;
 }
-.btn-outline-primary {
+.card-body-exam-options .btn-outline-primary {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +146,7 @@ hr {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.btn-outline-primary::before {
+.card-body-exam-options .btn-outline-primary::before {
   font-family: "Font Awesome 5 Free";
   content: "\f14a";
   margin-right: 5px;
