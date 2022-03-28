@@ -1,5 +1,5 @@
 .Quiz_multiple_options .container {
-  display: block;
+  display: inline-block;
   position: relative;
   padding-left: 32px;
   margin-bottom: 12px;
@@ -151,4 +151,24 @@ hr {
   content: "\f14a";
   margin-right: 5px;
   padding: 1px 5px;
+}
+.Quiz-DisplayResult table {
+  text-align: center;
+}
+.Quiz-DisplayResult tbody th {
+  font-size: 0.7rem;
+}
+.Quiz-DisplayResult .table-bordered {
+  border: 1px solid #edf2f9;
+}
+.Quiz-DisplayResult .table thead th {
+  background-color: #f9fbfd;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #95aac9;
+  border-bottom-width: 1px;
+}
+.table-sm thead th {
+  font-size: 0.7rem;
 }
