@@ -157,19 +157,6 @@ const Exam = () => {
         });
       }
     });
-    let anserArray = [];
-    list.forEach((item, key) => {
-      item.options.forEach((anslist, key) => {
-        if (anslist.selected === true) {
-          // console.log(item.que_id, anslist.que_options);
-          // anserArray.push(item.que_id, anslist.que_options);
-          // setUserAnswers([...anserArray]);
-
-          setUserAnswers(prevState => [...prevState, { q: item.que_id, a: anslist.que_options }]);
-        }
-      });
-    });
-    // console.log(nexState)
   };
 
   const onsubmit = () => {
@@ -246,6 +233,37 @@ const Exam = () => {
       </Snackbar>
     ) : null;
   };
+
+  const getAnswer = (e) => {
+    let anserArray = [...userAnswers];
+    // if (e.target.name) {
+    //   setUserAnswers((prevState) => [
+    //     ...prevState,
+    //     { que_id:parseInt(e.target.name) , a: e.target.value },
+    //   ]);
+
+    // }
+
+    var addedAnswer = anserArray.find((c) => c.que_id === parseInt(e.target.name));
+
+    if (addedAnswer) {
+      let newAnswer = userAnswers.filter(
+        (c) =>
+          c.que_id !== parseInt(e.target.name)
+          //  &&
+          // c.a !== e.target.value
+      );
+      setUserAnswers(newAnswer);
+      // setUserAnswers(newAnswer && [{que_id: parseInt(e.target.name), a: e.target.value }]);
+   
+    } else if (e.target.name) {
+      setUserAnswers((prevState) => [
+        ...prevState,
+        { que_id: parseInt(e.target.name), a: e.target.value },
+      ]);
+    }
+    //examImportantPurp
+  };
   return (
     <>
       <ExamHeader />
@@ -271,7 +289,7 @@ const Exam = () => {
                             className="Quiz_multiple_options"
                           >
                             {/*----------------------------------------------------------- optionslarin indexini gosterir */}
-                            <label className="container">
+                            <label className="container" onClick={getAnswer}>
                               <span className="option-index">{index_ans})</span>
 
                               {ans.que_options}
@@ -284,6 +302,7 @@ const Exam = () => {
                                 onChange={onInputChange}
                                 id={index_ans}
                               />
+
                               <span className="checkmark"></span>
                             </label>
                           </div>
