@@ -236,32 +236,47 @@ const Exam = () => {
 
   const getAnswer = (e) => {
     let anserArray = [...userAnswers];
-    // if (e.target.name) {
-    //   setUserAnswers((prevState) => [
-    //     ...prevState,
-    //     { que_id:parseInt(e.target.name) , a: e.target.value },
-    //   ]);
-
-    // }
-
-    var addedAnswer = anserArray.find((c) => c.que_id === parseInt(e.target.name));
-
-    if (addedAnswer) {
-      let newAnswer = userAnswers.filter(
-        (c) =>
-          c.que_id !== parseInt(e.target.name)
-          //  &&
-          // c.a !== e.target.value
-      );
-      setUserAnswers(newAnswer);
-      // setUserAnswers(newAnswer && [{que_id: parseInt(e.target.name), a: e.target.value }]);
-   
-    } else if (e.target.name) {
+    if (e.target.name) {
       setUserAnswers((prevState) => [
         ...prevState,
         { que_id: parseInt(e.target.name), a: e.target.value },
       ]);
     }
+
+    var addedAnswer = anserArray.find(
+      (c) => c.que_id === parseInt(e.target.name)
+    );
+
+    if (addedAnswer) {
+      let newAnswer = anserArray.filter(
+        (c) => c.que_id !== parseInt(e.target.name)
+        //  &&
+        // c.a !== e.target.value
+      );
+      setUserAnswers(newAnswer);
+      setUserAnswers((prevState) => [
+        ...prevState,
+        { que_id: parseInt(e.target.name), a: e.target.value },
+      ]);
+
+      // if (addedAnswer) {
+      //   let anss = anserArray.map((ans) => {
+      //     return {
+      //       ...ans,
+      //       que_id: parseInt(e.target.name),
+      //       a: e.target.value,
+      //     };
+      //   });
+      //   console.log(anss);
+      //   setUserAnswers(anss);
+      // }
+    }
+    // else if (e.target.name) {
+    //   setUserAnswers((prevState) => [
+    //     ...prevState,
+    //     { que_id: parseInt(e.target.name), a: e.target.value },
+    //   ]);
+    // }
     //examImportantPurp
   };
   return (
