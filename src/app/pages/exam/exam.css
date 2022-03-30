@@ -147,7 +147,7 @@ hr {
 }
 .card-body-exam-options .btn-outline-danger::before {
   font-family: "Font Awesome 5 Free";
-  content: "\f2d3";
+  content: "\f410";
   margin-right: 5px;
   padding: 1px 5px;
 }

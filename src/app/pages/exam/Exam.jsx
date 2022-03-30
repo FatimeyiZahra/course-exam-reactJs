@@ -47,6 +47,8 @@ const Exam = () => {
   ]);
   const [state, setState] = useState({
     quizLength: 0,
+    selectedLength:0,
+    quizOptionLength:0,
     activeStep: 0,
     Quiz_Set: Quiz_Set1,
     booleanonsubmit: false,
@@ -55,13 +57,23 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
+  // console.log(state.selectedLength)
   const [userAnswers, setUserAnswers] = useState([]);
   // console.log(userAnswers);
   const [stepAnswer, setStepAnswer] = useState();
   const handleNext = (e) => {
     setState({ activeStep: state.activeStep + 1 });
   };
-
+//  const getQuizOptionLength=()=>{
+//   let list = Quiz_Set1;
+//   let quizOptionLength=0;
+//   list.forEach(() => {
+//     quizOptionLength = quizOptionLength + 1;
+//   });
+//   setState({
+//     quizOptionLength:quizOptionLength,
+//   });
+//  }
   const handleBack = () => {
     setState({ activeStep: state.activeStep - 1 });
   };
@@ -117,12 +129,14 @@ const Exam = () => {
     let correct = 0; //count evvelki adi
     let notattempcount = 0;
     let quizLength = 0;
-
-    list.forEach((item, key) => {
+let selectedLength=0;
+     list.forEach((item, key) => {
       quizLength = quizLength + 1;
       item.options.forEach((anslist, key) => {
+        
         //  console.log("anslist.selected===>",anslist.selected)
         if (anslist.selected === true) {
+          selectedLength=selectedLength+1;
           // console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
           // setUserAnswers(item.que_id, anslist.que_options)
           if (anslist.que_options === item.ans) {
@@ -144,7 +158,8 @@ const Exam = () => {
     //-------------------------------------------------------------------------------------------------------------------
     //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam. 8*3=24 , 24-8=16
     // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
-    if (notattempcount <= Quiz_Set1.length*3 && notattempcount > Quiz_Set1.length*3-Quiz_Set1.length) {
+    // notattempcount <= Quiz_Set1.length*3 && notattempcount > Quiz_Set1.length*3-Quiz_Set1.length ------- asagidaki if sertinin icinde evvel bunu yazmisdim
+    if (selectedLength!==Quiz_Set1.length) {
       // console.log(notattempcount);
       setState({
         activeStep: Quiz_Set1.length - 1,
@@ -177,6 +192,7 @@ const Exam = () => {
         booleanonsubmit: true,
         CorrectAnswer: correct,
         quizLength: quizLength,
+        selectedLength:selectedLength
       });
     }
   };
