@@ -10,6 +10,7 @@ import alertify from "alertifyjs";
 import "./exam.css";
 import ExamHeader from "./ExamHeader";
 import ExamResult from "./ExamResult";
+import UserAnswer from "./UserAnswer";
 const Exam = () => {
   const [Quiz_Set1, setQuiz] = useState([
     {
@@ -42,56 +43,7 @@ const Exam = () => {
       ],
       ans: "8",
     },
-    {
-      que_id: 4,
-      que: "4) The sum of angles of a triangle is?",
-      options: [
-        { que_options: "90", selected: false, isTrueAnswer: false },
-        { que_options: "150", selected: false, isTrueAnswer: false },
-        { que_options: "180", selected: false, isTrueAnswer: true },
-      ],
-      ans: "180",
-    },
-    {
-      que_id: 5,
-      que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
-      options: [
-        { que_options: "Isosceles", selected: false, isTrueAnswer: false },
-        { que_options: "Equilateral", selected: false, isTrueAnswer: true },
-        { que_options: "Scalene", selected: false, isTrueAnswer: false },
-      ],
-      ans: "Equilateral",
-    },
-    {
-      que_id: 6,
-      que: "6) What is a third angle for a triangle where angle1 = 57° and angle2 = 92° ?",
-      options: [
-        { que_options: "45", selected: false, isTrueAnswer: false },
-        { que_options: "60", selected: false, isTrueAnswer: false },
-        { que_options: "31", selected: false, isTrueAnswer: true },
-      ],
-      ans: "31",
-    },
-    {
-      que_id: 7,
-      que: "7) Pythagoras theorem is applicable to which type of triangles?",
-      options: [
-        { que_options: "Right", selected: false, isTrueAnswer: true },
-        { que_options: "Acute", selected: false, isTrueAnswer: false },
-        { que_options: "Obtuse", selected: false, isTrueAnswer: false },
-      ],
-      ans: "Right",
-    },
-    {
-      que_id: 8,
-      que: "8) The triangle which has 2 sides congruent?",
-      options: [
-        { que_options: "Equilateral", selected: false, isTrueAnswer: false },
-        { que_options: "Isosceles", selected: false, isTrueAnswer: true },
-        { que_options: "Scalene", selected: false, isTrueAnswer: false },
-      ],
-      ans: "Isosceles",
-    },
+  
   ]);
   const [state, setState] = useState({
     quizLength: 0,
@@ -104,7 +56,7 @@ const Exam = () => {
     errormsg: "",
   });
   const [userAnswers, setUserAnswers] = useState([]);
-  console.log(userAnswers);
+  // console.log(userAnswers);
   const [stepAnswer, setStepAnswer] = useState();
   const handleNext = (e) => {
     setState({ activeStep: state.activeStep + 1 });
@@ -118,7 +70,7 @@ const Exam = () => {
     if (reason === "clickaway") {
       return;
     }
-    setState({ open: false });
+    setState({ open: false, activeStep: Quiz_Set1.length - 1 });
   };
 
   const onInputChange = (e) => {
@@ -171,18 +123,18 @@ const Exam = () => {
       item.options.forEach((anslist, key) => {
         //  console.log("anslist.selected===>",anslist.selected)
         if (anslist.selected === true) {
-          console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
+          // console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
           // setUserAnswers(item.que_id, anslist.que_options)
           if (anslist.que_options === item.ans) {
             //   console.log("===>",anslist.que_options,item.ans)
             correct = correct + 1;
           }
-          if (anslist.selected === anslist.isTrueAnswer) {
-            console.log("cavab dogrudu");
-            // correct = correct + 1;
-          } else {
-            console.log("cavab sevhdi");
-          }
+          // if (anslist.selected === anslist.isTrueAnswer) {
+          //   console.log("cavab dogrudu");
+          //   // correct = correct + 1;
+          // } else {
+          //   console.log("cavab sevhdi");
+          // }
         } else {
           notattempcount = notattempcount + 1;
         }
@@ -192,16 +144,35 @@ const Exam = () => {
     //-------------------------------------------------------------------------------------------------------------------
     //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam. 8*3=24 , 24-8=16
     // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
-    if (notattempcount <= 24 && notattempcount > 16) {
+    if (notattempcount <= Quiz_Set1.length*3 && notattempcount > Quiz_Set1.length*3-Quiz_Set1.length) {
       // console.log(notattempcount);
-      // setState({ booleanonsubmit: false, Total: correct });
-      alertify.error("Butun xanalari doldurun");
+      setState({
+        activeStep: Quiz_Set1.length - 1,
+        booleanonsubmit: false,
+        CorrectAnswer: correct,
+        catchmsg: "Please attempt all questions",
+        errormsg: "error",
+        open: true,
+      });
+      // alertify.error("Butun xanalari doldurun");
+
       // setState({
       //   catchmsg: "Please attempt all questions",
       //   errormsg: "error",
       //   open: true,
       // });
     } else {
+      //--------------------------------------------------user asnwers
+      list.forEach((item, key) => {
+        item.options.forEach((anslist, key) => {
+          if (anslist.selected === true) {
+            setUserAnswers((prevState) => [
+              ...prevState,
+              { que_id: item.que_id, a: anslist.que_options },
+            ]);
+          }
+        });
+      });
       setState({
         booleanonsubmit: true,
         CorrectAnswer: correct,
@@ -234,51 +205,6 @@ const Exam = () => {
     ) : null;
   };
 
-  const getAnswer = (e) => {
-    let anserArray = [...userAnswers];
-    if (e.target.name) {
-      setUserAnswers((prevState) => [
-        ...prevState,
-        { que_id: parseInt(e.target.name), a: e.target.value },
-      ]);
-    }
-
-    var addedAnswer = anserArray.find(
-      (c) => c.que_id === parseInt(e.target.name)
-    );
-
-    if (addedAnswer) {
-      let newAnswer = anserArray.filter(
-        (c) => c.que_id !== parseInt(e.target.name)
-        //  &&
-        // c.a !== e.target.value
-      );
-      setUserAnswers(newAnswer);
-      setUserAnswers((prevState) => [
-        ...prevState,
-        { que_id: parseInt(e.target.name), a: e.target.value },
-      ]);
-
-      // if (addedAnswer) {
-      //   let anss = anserArray.map((ans) => {
-      //     return {
-      //       ...ans,
-      //       que_id: parseInt(e.target.name),
-      //       a: e.target.value,
-      //     };
-      //   });
-      //   console.log(anss);
-      //   setUserAnswers(anss);
-      // }
-    }
-    // else if (e.target.name) {
-    //   setUserAnswers((prevState) => [
-    //     ...prevState,
-    //     { que_id: parseInt(e.target.name), a: e.target.value },
-    //   ]);
-    // }
-    //examImportantPurp
-  };
   return (
     <>
       <ExamHeader />
@@ -304,7 +230,10 @@ const Exam = () => {
                             className="Quiz_multiple_options"
                           >
                             {/*----------------------------------------------------------- optionslarin indexini gosterir */}
-                            <label className="container" onClick={getAnswer}>
+                            <label
+                              className="container"
+                              // onClick={getAnswer}
+                            >
                               <span className="option-index">{index_ans})</span>
 
                               {ans.que_options}
@@ -339,7 +268,7 @@ const Exam = () => {
                 position="static"
                 activeStep={state.activeStep}
                 nextButton={
-                  state.activeStep === 7 ? (
+                  state.activeStep === Quiz_Set1.length - 1 ? (
                     <Button size="small" onClick={onsubmit}>
                       Submit
                     </Button>
@@ -369,47 +298,51 @@ const Exam = () => {
 
         {Snackbarrender()}
       </div>
-      <Card className="card-transaction">
-        <CardHeader className="cardHeaderCustom card-header">
-          <CardTitle tag="h4">Questions</CardTitle>
-        </CardHeader>
-        <CardBody
-          style={{ paddingTop: "1rem" }}
-          className="card-body-exam-options"
-        >
-          <Row justify="start">
-            {Quiz_Set1 &&
-              Quiz_Set1.map((item, index) => {
-                return (
-                  <Col
-                    key={index}
-                    className="bg-light border"
-                    sm={{ span: 6 }}
-                    xs={{ span: 6 }}
-                    md={{ span: 2 }}
-                    xl={{ span: 2 }}
-                    lg={{ span: 2 }}
-                  >
-                    <button
-                      onClick={getQueno}
-                      id={index}
-                      type="button"
-                      className={
-                        item.options[0].selected !== true &&
-                        item.options[1].selected !== true &&
-                        item.options[2].selected !== true
-                          ? "btn-outline-secondary"
-                          : "btn-outline-primary"
-                      }
+      {state.booleanonsubmit ? (
+        <UserAnswer Quiz_Set1={Quiz_Set1}  />
+      ) : (
+        <Card className="card-transaction">
+          <CardHeader className="cardHeaderCustom card-header">
+            <CardTitle tag="h4">Questions</CardTitle>
+          </CardHeader>
+          <CardBody
+            style={{ paddingTop: "1rem" }}
+            className="card-body-exam-options"
+          >
+            <Row justify="start">
+              {Quiz_Set1 &&
+                Quiz_Set1.map((item, index) => {
+                  return (
+                    <Col
+                      key={index}
+                      className="bg-light border"
+                      sm={{ span: 6 }}
+                      xs={{ span: 6 }}
+                      md={{ span: 2 }}
+                      xl={{ span: 2 }}
+                      lg={{ span: 2 }}
                     >
-                      {index + 1} Q
-                    </button>
-                  </Col>
-                );
-              })}
-          </Row>
-        </CardBody>
-      </Card>
+                      <button
+                        onClick={getQueno}
+                        id={index}
+                        type="button"
+                        className={
+                          item.options[0].selected !== true &&
+                          item.options[1].selected !== true &&
+                          item.options[2].selected !== true
+                            ? "btn-outline-secondary"
+                            : "btn-outline-primary"
+                        }
+                      >
+                        {index + 1} Q
+                      </button>
+                    </Col>
+                  );
+                })}
+            </Row>
+          </CardBody>
+        </Card>
+      )}
     </>
   );
 };

@@ -125,6 +125,58 @@ hr {
   margin-right: 5px;
   padding: 1px 5px;
 }
+.card-body-exam-options .btn-outline-danger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  width: auto !important;
+  margin-top: 0 !important;
+  margin-left: 10px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  border-radius: 0.25rem;
+
+  background-color: transparent;
+  border: 1px solid #e63757 !important;
+  color: #e63757 ;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.card-body-exam-options .btn-outline-danger::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f2d3";
+  margin-right: 5px;
+  padding: 1px 5px;
+}
+.card-body-exam-options .btn-outline-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  width: auto !important;
+  margin-top: 0 !important;
+  margin-left: 10px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  border-radius: 0.25rem;
+
+  background-color: transparent;
+  border: 1px solid #00d97e !important;
+  color: #00d97e;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.card-body-exam-options .btn-outline-success::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f14a";
+  margin-right: 5px;
+  padding: 1px 5px;
+}
 .card-body-exam-options .btn-outline-primary {
   display: flex;
   justify-content: center;
