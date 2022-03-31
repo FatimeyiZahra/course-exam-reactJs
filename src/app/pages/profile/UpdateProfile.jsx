@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card, Row, Col, Form, Input } from "antd";
 import { Upload } from "antd";
-import ImgCrop from "antd-img-crop";
 import "antd/dist/antd.min.css";
 import UserAvatar from "../../../assets/image/avatar/avatar.png";
 import {

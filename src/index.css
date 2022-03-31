@@ -1,7 +1,7 @@
 .mr-10 {
   margin-right: 10px;
 }
-.sidebar-header{
+.sidebar-header {
   padding: 0.35rem 1rem 0.3rem 1.64rem;
   /* width: 260px; */
   width: auto;
@@ -10,13 +10,13 @@
   transition: 300ms ease all, background 0s;
 }
 
-.sidebar-header ul{
+.sidebar-header ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.me-auto{
+.me-auto {
   margin-right: auto !important;
 }
 .sidebar-header .logo {
@@ -26,7 +26,7 @@
   /* height: 32px; */
   /* margin: 16px; */
 }
-.sidebar-header .logo img{
+.sidebar-header .logo img {
   max-width: 36px;
 }
 .nav-toggle {
@@ -77,7 +77,12 @@
   z-index: 12;
 }
 .header-navbar-shadow {
-  background: linear-gradient(180deg, rgba(248, 248, 248, 0.95) 44%, rgba(248, 248, 248, 0.46) 73%, rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    180deg,
+    rgba(248, 248, 248, 0.95) 44%,
+    rgba(248, 248, 248, 0.46) 73%,
+    rgba(255, 255, 255, 0)
+  );
   left: 0;
   padding-top: 2.2rem;
   display: block;
@@ -86,7 +91,6 @@
   position: fixed;
   top: 0;
   z-index: 11;
-
 }
 .card {
   margin-bottom: 2rem;
@@ -97,7 +101,7 @@
   left: 1385px !important;
 } */
 .content.app-content {
- padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
+  padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
 }
 .ant-layout-header {
   padding: 0 !important;
@@ -155,7 +159,7 @@
     width: 260px;
     left: -260px;
   }
-  
+
   .content {
     margin-left: 0 !important;
   }
@@ -176,6 +180,29 @@
     margin: 1.3rem auto 0;
   }
 }
-.DropDownPosition.ant-dropdown{
+.DropDownPosition.ant-dropdown {
   left: 1338px !important;
+}
+.sidenav-overlay.show {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s ease;
+}
+ .sidenav-overlay,
+.sidenav-overlay {
+  left: 0;
+  right: 0;
+}
+.sidenav-overlay {
+  background-color: rgba(34, 41, 47, 0.5);
+}
+.sidenav-overlay {
+  position: fixed;
+  top: 0;
+  height: 120vh;
+  z-index: 997;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
 }

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { MobileStepper } from "@mui/material";
 import Button from "@material-ui/core/Button";
-import Replay from "@mui/icons-material/Replay";
+// import Replay from "@mui/icons-material/Replay";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
 import { Row, Col } from "antd";
-import alertify from "alertifyjs";
+// import alertify from "alertifyjs";
 import "./exam.css";
 import ExamHeader from "./ExamHeader";
 import ExamResult from "./ExamResult";
@@ -43,12 +43,31 @@ const Exam = () => {
       ],
       ans: "8",
     },
-  
+    {
+      que_id: 4,
+      que: "4) The sum of angles of a triangle is?",
+      options: [
+        { que_options: "90", selected: false, isTrueAnswer: false },
+        { que_options: "150", selected: false, isTrueAnswer: false },
+        { que_options: "180", selected: false, isTrueAnswer: true },
+      ],
+      ans: "180",
+    },
+    {
+      que_id: 5,
+      que: "5) A triangle has angles 60°,60° and 60°.State the type of triangle?",
+      options: [
+        { que_options: "Isosceles", selected: false, isTrueAnswer: false },
+        { que_options: "Equilateral", selected: false, isTrueAnswer: true },
+        { que_options: "Scalene", selected: false, isTrueAnswer: false },
+      ],
+      ans: "Equilateral",
+    },
   ]);
   const [state, setState] = useState({
     quizLength: 0,
-    selectedLength:0,
-    quizOptionLength:0,
+    selectedLength: 0,
+    quizOptionLength: 0,
     activeStep: 0,
     Quiz_Set: Quiz_Set1,
     booleanonsubmit: false,
@@ -64,16 +83,16 @@ const Exam = () => {
   const handleNext = (e) => {
     setState({ activeStep: state.activeStep + 1 });
   };
-//  const getQuizOptionLength=()=>{
-//   let list = Quiz_Set1;
-//   let quizOptionLength=0;
-//   list.forEach(() => {
-//     quizOptionLength = quizOptionLength + 1;
-//   });
-//   setState({
-//     quizOptionLength:quizOptionLength,
-//   });
-//  }
+  //  const getQuizOptionLength=()=>{
+  //   let list = Quiz_Set1;
+  //   let quizOptionLength=0;
+  //   list.forEach(() => {
+  //     quizOptionLength = quizOptionLength + 1;
+  //   });
+  //   setState({
+  //     quizOptionLength:quizOptionLength,
+  //   });
+  //  }
   const handleBack = () => {
     setState({ activeStep: state.activeStep - 1 });
   };
@@ -129,14 +148,13 @@ const Exam = () => {
     let correct = 0; //count evvelki adi
     let notattempcount = 0;
     let quizLength = 0;
-let selectedLength=0;
-     list.forEach((item, key) => {
+    let selectedLength = 0;
+    list.forEach((item, key) => {
       quizLength = quizLength + 1;
       item.options.forEach((anslist, key) => {
-        
         //  console.log("anslist.selected===>",anslist.selected)
         if (anslist.selected === true) {
-          selectedLength=selectedLength+1;
+          selectedLength = selectedLength + 1;
           // console.log(item.que_id, anslist.que_options); //---------------------USER ANSWERS LIST
           // setUserAnswers(item.que_id, anslist.que_options)
           if (anslist.que_options === item.ans) {
@@ -159,7 +177,7 @@ let selectedLength=0;
     //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam. 8*3=24 , 24-8=16
     // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
     // notattempcount <= Quiz_Set1.length*3 && notattempcount > Quiz_Set1.length*3-Quiz_Set1.length ------- asagidaki if sertinin icinde evvel bunu yazmisdim
-    if (selectedLength!==Quiz_Set1.length) {
+    if (selectedLength !== Quiz_Set1.length) {
       // console.log(notattempcount);
       setState({
         activeStep: Quiz_Set1.length - 1,
@@ -192,7 +210,7 @@ let selectedLength=0;
         booleanonsubmit: true,
         CorrectAnswer: correct,
         quizLength: quizLength,
-        selectedLength:selectedLength
+        selectedLength: selectedLength,
       });
     }
   };
@@ -315,7 +333,7 @@ let selectedLength=0;
         {Snackbarrender()}
       </div>
       {state.booleanonsubmit ? (
-        <UserAnswer Quiz_Set1={Quiz_Set1}  />
+        <UserAnswer Quiz_Set1={Quiz_Set1} />
       ) : (
         <Card className="card-transaction">
           <CardHeader className="cardHeaderCustom card-header">

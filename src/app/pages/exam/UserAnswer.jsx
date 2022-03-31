@@ -101,6 +101,9 @@ const Exam = ({ Quiz_Set1 }) => {
                     <h3 className="Quiz_Question">Review - Question {index+1} </h3>
                     <div className="Quiz_que">{item.que}</div>
                     <hr></hr>
+                    {/* <h3 className="Quiz_Question">Correct Answer  </h3>
+                    <div className="Quiz_que">{item.ans}</div>
+                    <hr></hr> */}
                     <h3 className="Quiz_options"> Answer Options </h3>
                     {item.options.map((ans, index_ans) => {
                       index_ans = index_ans + 1;

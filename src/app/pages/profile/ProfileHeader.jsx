@@ -1,8 +1,5 @@
-// ** React Imports
-
-// ** Icons Imports
 import { useState } from "react";
-import { AlignJustify, Rss, Info } from "react-feather";
+import { AlignJustify, Rss } from "react-feather";
 import UserAvatar from "../../../assets/image/avatar/avatar.png";
 import BackGroundPic from "../../../assets/image/background/profile-cover-9.jpg";
 // ** Reactstrap Imports
@@ -16,29 +13,28 @@ import {
   NavLink,
   Button,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ProfileHeader = () => {
-  // ** States
+  let location = useLocation();
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
-  const [acn1, setAcn1] = useState("active"); // assumes link 1 is default active
-  const [acn2, setAcn2] = useState("");
-  // const [acn3,setAcn3] = useState('')
+  const [navLinks] = useState([
+    {
+      path: "/user-information",
+      main: "Information",
+      icon:"info"
+    },
+    {
+      path: "/update-profile",
+      main: "Update Profile",
+      icon:"edit"
+    },
+  ]);
 
-  const startChangeVis = (id) => {
-    console.log(id);
-    setAcn1("");
-    setAcn2("");
-    // setAcn3('')
-    if (id === "a") {
-      setAcn1("active");
-    } else if (id === "b") {
-      setAcn2("active");
-    }
-    // else if(id === 'c') setAcn3('active')
-  };
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
     <Card className="profile-header mb-2">
       <CardImg src={BackGroundPic} alt="User Profile Image" top />
@@ -66,38 +62,21 @@ const ProfileHeader = () => {
           <Collapse isOpen={isOpen} navbar>
             <div className="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
               <Nav className="mb-0" pills>
-                <NavItem
-                  onClick={() => {
-                    startChangeVis("a");
-                  }}
-                >
-                  <NavLink
-                    tag={Link}
-                    to={"/user-information"}
-                    id="a"
-                    className={acn1?acn1:""}
-                  >
-                    <span className="d-none d-md-block">Information</span>
+                {navLinks.map((nav) => (
+                  <NavItem  key={nav.path}>
+                    <NavLink
+                      tag={Link}
+                      to={nav.path}
+                     
+                      active={location.pathname === nav.path ? true : false}
+                    >
+                      <span className="d-none d-md-block">{nav.main}</span>
+                      <span className="d-block d-md-none" id={nav.icon} />
+                      {/* <Rss className="d-block d-md-none" size={14} /> */}
+                    </NavLink>{" "}
+                  </NavItem>
+                ))}
 
-                    <Rss className="d-block d-md-none" size={14} />
-                  </NavLink>
-                </NavItem>
-                <NavItem
-                  onClick={() => {
-                    startChangeVis("b");
-                  }}
-                >
-                  <NavLink
-                    tag={Link}
-                    to={"/update-profile"}
-                    id="b"
-                    className={acn2?acn2 :""}
-                  >
-                    <span className="d-none d-md-block">Update Profile</span>
-
-                    <Info className="d-block d-md-none" size={14} />
-                  </NavLink>
-                </NavItem>
                 {/* <NavItem>
                   <NavLink className="fw-bold">
                     <span className="d-none d-md-block">Profile Image</span>

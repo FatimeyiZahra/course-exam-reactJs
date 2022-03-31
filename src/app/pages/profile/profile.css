@@ -43,10 +43,23 @@
     height: 100px;
     width: 100px;
   }
+  #user-profile .profile-header .profile-img-container {
+    position: absolute;
+    bottom: -3.5rem;
+    left: 2rem;
+    z-index: 2;
+  }
+  .profile-header-nav .profile-tabs{
+    margin-top: 1.25rem !important;
+  }
 }
 @media (max-width: 576px) {
   #user-profile .profile-header .profile-img-container .profile-title h2 {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
+  }
+  #user-profile .profile-header .profile-img-container .profile-title {
+    margin-left: 1rem !important;
+    margin-bottom: 30px;
   }
 }
 @media (min-width: 992px) {
@@ -139,6 +152,7 @@
   }
 }
 #user-profile .profile-header .profile-header-nav .navbar .navbar-toggler {
+  z-index: 90;
   line-height: 0;
 }
 .btn.btn-icon {
@@ -273,6 +287,20 @@ element.style {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
+}
+.nav-pills .nav-link #info::before{
+  content: '\f129';
+  font-family: "Font Awesome 5 Free"; 
+  font-style: normal;
+  font-weight: 900;
+  text-decoration: inherit;
+}
+.nav-pills .nav-link #edit::before{
+  content: '\f044';
+  font-family: "Font Awesome 5 Free"; 
+  font-style: normal;
+  font-weight: 900;
+  text-decoration: inherit;
 }
 @media (min-width: 768px) {
   .d-md-none {
