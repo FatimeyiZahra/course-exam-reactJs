@@ -79,9 +79,11 @@ const CourseDetailsTable = () => {
                     color: "#40a9ff",
                     borderColor: "#40a9ff",
                   }}
-                  icon={<FileTextOutlined style={{ marginBottom: "1px" }} />}
+                  icon={<FileTextOutlined style={{ marginBottom: "1px",marginRight:"8px" }} />}
                 >
-                  FULL COURSE TEXT
+                  <a href="Economic-concepts-explained.pdf" target="_blank" rel="noreferrer">
+                    FULL COURSE TEXT
+                  </a>
                 </Button>
                 {/* <button
               type="button"

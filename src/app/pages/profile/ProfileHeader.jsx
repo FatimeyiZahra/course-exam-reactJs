@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AlignJustify, Rss } from "react-feather";
+import { AlignJustify } from "react-feather";
 import UserAvatar from "../../../assets/image/avatar/avatar.png";
 import BackGroundPic from "../../../assets/image/background/profile-cover-9.jpg";
 // ** Reactstrap Imports

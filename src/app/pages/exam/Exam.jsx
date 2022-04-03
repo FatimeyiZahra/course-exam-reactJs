@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { MobileStepper } from "@mui/material";
 import Button from "@material-ui/core/Button";
 // import Replay from "@mui/icons-material/Replay";
@@ -80,9 +80,7 @@ const Exam = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   // console.log(userAnswers);
   const [stepAnswer, setStepAnswer] = useState();
-  const handleNext = (e) => {
-    setState({ activeStep: state.activeStep + 1 });
-  };
+
   //  const getQuizOptionLength=()=>{
   //   let list = Quiz_Set1;
   //   let quizOptionLength=0;
@@ -93,9 +91,13 @@ const Exam = () => {
   //     quizOptionLength:quizOptionLength,
   //   });
   //  }
-  const handleBack = () => {
+  const handleNext = useCallback(() => {
+    setState({ activeStep: state.activeStep + 1 });
+  }, [state]);
+
+  const handleBack = useCallback(() => {
     setState({ activeStep: state.activeStep - 1 });
-  };
+  }, [state]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -104,43 +106,28 @@ const Exam = () => {
     setState({ open: false, activeStep: Quiz_Set1.length - 1 });
   };
 
-  const onInputChange = (e) => {
-    // console.log(e.target.name);
-    // e.preventDefault();
-    const Quiz_Set = Quiz_Set1;
-    const nexState = Quiz_Set.map((card) => {
-      if (card.que_id !== parseInt(e.target.name)) return card;
-      return {
-        ...card,
-        options: card.options.map((opt) => {
-          const checked = opt.que_options === e.target.value;
-          return {
-            ...opt,
-            selected: checked,
-          };
-        }),
-      };
-    });
-    setQuiz(nexState);
-    let list = Quiz_Set1;
-    list.forEach((item, key) => {
-      if (Math.abs(state.activeStep - key) <= 0) {
-        // if(!item.options[key].selected){
-        //   alertify.error("Cavablardan birini secin");
-        // }else {
-        //   setState({ activeStep: state.activeStep + 1 });
-        // }
-        // if(item.options[0].selected!==true && item.options[1].selected!==true  && item.options[2].selected!==true){
-        //   alertify.error("Cavablardan birini secin");
-        // }
-        item.options.forEach((anslist, key) => {
-          if (anslist.selected === true) {
-            setStepAnswer(true);
-          }
-        });
-      }
-    });
-  };
+  const onInputChange = useCallback(
+    (e) => {
+      // console.log(e.target.name);
+      // e.preventDefault();
+      const Quiz_Set = Quiz_Set1;
+      const nexState = Quiz_Set.map((card) => {
+        if (card.que_id !== parseInt(e.target.name)) return card;
+        return {
+          ...card,
+          options: card.options.map((opt) => {
+            const checked = opt.que_options === e.target.value;
+            return {
+              ...opt,
+              selected: checked,
+            };
+          }),
+        };
+      });
+      setQuiz(nexState);
+    },
+    [Quiz_Set1]
+  );
 
   const onsubmit = () => {
     //   console.log(state.Quiz_Set)
@@ -215,10 +202,10 @@ const Exam = () => {
     }
   };
   //------------------------------------------------------------------------------------------------------------------------
-  const getQueno = (e) => {
+  const getQueno = useCallback((e) => {
     setState({ activeStep: parseInt(e.target.id) });
-    // console.log(e.target.id)
-  };
+  }, []);
+
   const Snackbarrender = () => {
     return state.open ? (
       <Snackbar
@@ -249,7 +236,7 @@ const Exam = () => {
           <div className="Quiz_container_display">
             {/* Link button onclick open pdf file in new tab react */}
             {/* -----------------------------------------------------------display pdf in window new tab */}
-         {/* <a href="post(4).pdf" target="_blank" rel="noreferrer"> // rel="noreferrer noopener"
+            {/* <a href="post(4).pdf" target="_blank" rel="noreferrer"> // rel="noreferrer noopener"
         open pdf
       </a> */}
             {/* <embed

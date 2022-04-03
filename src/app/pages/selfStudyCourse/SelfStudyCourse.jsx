@@ -80,7 +80,7 @@ const SelfStudyCourse = () => {
   return (
     <div style={{ marginLeft: "15px" }}>
       <Row gutter={[16, 16]}>
-        <Col sm={24} xs={24} md={16} lg={16}>
+        <Col sm={24} xs={24} md={24} lg={16}>
           <div>
             <VideoPlayer
               className="videoResponsive"
@@ -101,7 +101,7 @@ const SelfStudyCourse = () => {
             />
           </div>
         </Col>
-        <Col xs={24} md={8} lg={8}>
+        <Col xs={24} md={24} lg={8}>
           <Card
             className="card-course-content no-shadow"
             style={{ height: "420px", overflowY: "auto",marginBottom:"0" }}

@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.min.css";
-import "../../index.css";
+import "./index.css";
 import { Layout } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardSider from "./sider/DashboardSider";
@@ -32,10 +32,10 @@ const DashboardLayout = ({ children }) => {
           {children}
         </Content>
       </Layout>
-      {/* <div
+      <div
         onClick={ChangeCollapse}
-        className={collapsed ? "sidenav-overlay " : "sidenav-overlay show "} //d-block d-md-none
-      ></div> */}
+        className={collapsed ? "sidenav-overlay d-none d-sm-block" : "sidenav-overlay show d-none d-sm-block"} //d-block d-md-none
+      ></div>
     </Layout>
   );
 };

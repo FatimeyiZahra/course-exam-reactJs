@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "antd/dist/antd.min.css";
-import "./index.css";
 
 import DashboardLayout from "./app/layout/DashboardLayout";
 import SignIn from "./app/pages/signIn/SignIn";
