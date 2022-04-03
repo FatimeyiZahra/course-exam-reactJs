@@ -247,6 +247,17 @@ const Exam = () => {
           <ExamResult state={state} />
         ) : (
           <div className="Quiz_container_display">
+            {/* Link button onclick open pdf file in new tab react */}
+            {/* -----------------------------------------------------------display pdf in window new tab */}
+         {/* <a href="post(4).pdf" target="_blank" rel="noreferrer"> // rel="noreferrer noopener"
+        open pdf
+      </a> */}
+            {/* <embed
+              src="post(4).pdf" //Economic-concepts-explained.pdf
+              width="500"
+              height="375"
+              type="application/pdf"
+            ></embed> */}
             {Quiz_Set1 &&
               Quiz_Set1.map((item, index) => {
                 if (Math.abs(state.activeStep - index) <= 0) {
@@ -351,8 +362,8 @@ const Exam = () => {
                       key={index}
                       className="bg-light border"
                       sm={{ span: 6 }}
-                      xs={{ span: 6 }}
-                      md={{ span: 2 }}
+                      xs={{ span: 8 }}
+                      md={{ span: 3 }}
                       xl={{ span: 2 }}
                       lg={{ span: 2 }}
                     >

@@ -16,14 +16,14 @@ const SideBarMenuItem = () => {
       <Menu.Item
         key="1"
         icon={<PieChartOutlined style={{ fontSize: "20px" }} />}
-        style={{ fontWeight: "400", fontSize: "1.1rem ", color: "#625f6e" }}
+        style={{ fontWeight: "400", fontSize: "0.938rem ", color: "#625f6e" }}
       >
         <Link to="/">Login</Link>
       </Menu.Item>
       <Menu.Item
         key="2"
         icon={<DesktopOutlined style={{ fontSize: "20px" }} />}
-        style={{ fontWeight: "400", fontSize: "1.1rem ", color: "#625f6e" }}
+        style={{ fontWeight: "400", fontSize: "0.938rem ", color: "#625f6e" }}
       >
         Option 2
       </Menu.Item>
@@ -31,7 +31,7 @@ const SideBarMenuItem = () => {
         key="sub1"
         icon={<UserOutlined style={{ fontSize: "20px" }} />}
         title="User"
-        style={{ fontWeight: "400", fontSize: "1.1rem ", color: "#625f6e" }}
+        style={{ fontWeight: "400", fontSize: "0.938rem ", color: "#625f6e" }}
       >
         <Menu.Item key="3">Tom</Menu.Item>
         <Menu.Item key="4">Bill</Menu.Item>
@@ -41,7 +41,7 @@ const SideBarMenuItem = () => {
         key="sub2"
         icon={<TeamOutlined style={{ fontSize: "20px" }} />}
         title="Course"
-        style={{ fontWeight: "400", fontSize: "1.1rem ", color: "#625f6e" }}
+        style={{ fontWeight: "400", fontSize: "0.938rem ", color: "#625f6e" }}
       >
         <Menu.Item key="6">
           <Link to="/SelfStudyCourse">Seld Study Course Category</Link>
@@ -60,7 +60,7 @@ const SideBarMenuItem = () => {
             style={{ fontSize: "20px", margin: "0px 6px 0px 0px" }}
           />
         }
-        style={{ fontWeight: "400", fontSize: "1.1rem ", color: "#625f6e" }}
+        style={{ fontWeight: "400", fontSize: "0.938rem ", color: "#625f6e" }}
       >
         <Link to="/courseDetails">Course Details</Link>
       </Menu.Item>

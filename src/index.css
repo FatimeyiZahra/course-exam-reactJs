@@ -63,7 +63,7 @@
   transition: 300ms ease all !important;
   right: 30px;
   margin: 1.3rem auto 0;
-  width: calc(100vw - (100vw - 100%) - calc(2rem * 2) - 273px);
+  width: calc(100vw - (100vw - 100%) - calc(2rem * 2) - 260px);
   border-radius: 0.428rem;
   z-index: 12;
 }
@@ -119,7 +119,7 @@
   margin-left: 80px;
 }
 .uncollapsedStyle {
-  margin-left: 276px;
+  margin-left: 260px;
   transition: 300ms ease all !important;
   padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
 }
@@ -179,6 +179,9 @@
   .header-navbar {
     margin: 1.3rem auto 0;
   }
+  /* .sidenav-overlay.d-block{
+    display: block !important;
+  } */
 }
 .DropDownPosition.ant-dropdown {
   left: 1338px !important;

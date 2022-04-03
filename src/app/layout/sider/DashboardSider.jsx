@@ -26,7 +26,7 @@ const DashboardSider = () => {
       trigger={null}
       collapsible
       collapsed={collapsed}
-      width={260}
+      width={250}
       // breakpoint="lg"
       // collapsedWidth="0"
       // onBreakpoint={broken => {

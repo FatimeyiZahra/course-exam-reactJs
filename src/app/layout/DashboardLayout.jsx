@@ -32,10 +32,10 @@ const DashboardLayout = ({ children }) => {
           {children}
         </Content>
       </Layout>
-      <div
+      {/* <div
         onClick={ChangeCollapse}
-        className={collapsed ? "sidenav-overlay" : "sidenav-overlay show"}
-      ></div>
+        className={collapsed ? "sidenav-overlay " : "sidenav-overlay show "} //d-block d-md-none
+      ></div> */}
     </Layout>
   );
 };
