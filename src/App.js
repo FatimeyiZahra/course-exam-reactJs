@@ -7,7 +7,6 @@ import SignIn from "./app/pages/signIn/SignIn";
 import DashBoard from "./app/pages/dashboard/DashBoard";
 import SelfStudyCoursesCategory from "./app/pages/selfStudyCoursesCategory/SelfStudyCoursesCategory";
 import CourseDetails from "./app/pages/courseDetails/CourseDetails";
-import Probnik from "./app/pages/courseDetails/probnik";
 import UserProfile from "./app/pages/profile/UserProfile";
 import Information from "./app/pages/profile/Information";
 import UpdateProfile from "./app/pages/profile/UpdateProfile";
@@ -36,9 +35,6 @@ function App() {
           </Route>
           <Route exact path="/courseDetails">
             <CourseDetails />
-          </Route>
-          <Route exact path="/table">
-            <Probnik />
           </Route>
           <Route exact path="/exam">
             <Exam />

@@ -1,4 +1,4 @@
-import "../cardTransactions/index.css";
+import "../cardBrowserState/index.css";
 
 // ** Reactstrap Imports
 import { Card, CardBody, CardText, CardTitle, CardHeader } from "reactstrap";

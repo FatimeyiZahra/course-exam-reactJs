@@ -52,7 +52,6 @@ const UpdateProfile = () => {
 
   // console.log(name)
   return (
-    <Card>
       <Card>
         <Form className="update-user-info">
           <Row gutter={[16, 16]}>
@@ -181,7 +180,6 @@ const UpdateProfile = () => {
           </Row>
         </Form>
       </Card>
-    </Card>
   );
 };
 

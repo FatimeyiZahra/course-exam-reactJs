@@ -10,7 +10,7 @@ const UserProfile = ({ children }) => {
           <ProfileHeader />
         </Col>
       </Row>
-      <section id="profile-info">{children}</section>
+      <section id="profile-info" style={{paddingBottom:"20px"}}>{children}</section>
     </div>
   );
 };

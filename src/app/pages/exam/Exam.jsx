@@ -76,10 +76,9 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
-  // console.log(state.selectedLength)
+  // console.log(Quiz_Set1[1].options.length)
   const [userAnswers, setUserAnswers] = useState([]);
   // console.log(userAnswers);
-  const [stepAnswer, setStepAnswer] = useState();
 
   //  const getQuizOptionLength=()=>{
   //   let list = Quiz_Set1;
@@ -359,11 +358,12 @@ const Exam = () => {
                         id={index}
                         type="button"
                         className={
-                          item.options[0].selected !== true &&
-                          item.options[1].selected !== true &&
-                          item.options[2].selected !== true
-                            ? "btn-outline-secondary"
-                            : "btn-outline-primary"
+                         item.options.find(x=>x.selected===true)?"btn-outline-primary":"btn-outline-secondary"
+                          // item.options[0].selected !== true &&
+                          // item.options[1].selected !== true &&
+                          // item.options[2].selected !== true
+                          //   ? "btn-outline-secondary"
+                          //   : "btn-outline-primary"
                         }
                       >
                         {index + 1} Q

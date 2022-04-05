@@ -1,4 +1,4 @@
-import "../cardTransactions/index.css"
+import "./index.css"
 // ** Reactstrap Imports
 import {
   Card,

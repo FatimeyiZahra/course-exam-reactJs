@@ -33,7 +33,7 @@ const SelfStudyCourse = () => {
 
   const onVideoSeeking = (duration) => {
     setVideoSeeked(true);
-    console.log("Video seeking: ", duration);
+    // console.log("Video seeking: ", duration);
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const SelfStudyCourse = () => {
   // };
 
   const onPlayerReady = (player) => {
-    console.log("Player is ready: ", player);
+    // console.log("Player is ready: ", player);
     // this.player = player;
   };
 
