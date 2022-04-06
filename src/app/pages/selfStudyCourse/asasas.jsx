@@ -4,6 +4,7 @@ import { Row, Col } from "antd";
 import "antd/dist/antd.min.css";
 import { Collapse } from "antd";
 import { Card, CardBody, CardTitle, CardHeader } from "reactstrap";
+import { PlusOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import "./selfStudyCourse.css";
 import { Input } from "reactstrap";
@@ -32,7 +33,6 @@ const SelfStudyCourse = () => {
   const [videoWatched, setVideoWatched] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [items, setMenuItems] = useState([]);
   const [subMenu, setsubMenu] = useState([
     {
       key: "sub1",
@@ -119,14 +119,6 @@ const SelfStudyCourse = () => {
     if (videoSeeked === false && videoEnd === true) {
       setVideoWatched(true);
     }
-    subMenu.map((men) => {
-      men.menuItem.map((as) => {
-        setMenuItems((prevState) => [
-          ...prevState,
-          { key: as.key, name: as.name },
-        ]);
-      });
-    });
   }, [videoEnd]);
   const onVideoEnd = () => {
     setVideoEnd(true);
@@ -155,24 +147,48 @@ const SelfStudyCourse = () => {
 
   const handleFilter = (e) => {
     const value = e.target.value;
-    let upData = [];
+    let updatedData = [];
     setSearchValue(value);
     if (value.length) {
-      upData = items.filter((men) => {
-        const startsWith = men.name.toLowerCase().startsWith(value.toLowerCase());
+      updatedData = subMenu.filter((item) => {
+        const startsWith = 
+        item.title.toLowerCase().startsWith(value.toLowerCase()) 
+        const includes = 
+        item.title.toLowerCase().includes(value.toLowerCase()) 
 
-        const includes = men.name.toLowerCase().includes(value.toLowerCase());
         if (startsWith) {
           return startsWith;
         } else if (!startsWith && includes) {
           return includes;
         } else return null;
       });
-      setFilteredData(upData);
+      setFilteredData(updatedData);
       setSearchValue(value);
     }
   };
-  
+  // upData=subMenu.map((men)=>{
+  //   men.menuItem.filter((mItem)=>{
+  //     const startsWith = 
+  //     mItem.name.toLowerCase().startsWith(value.toLowerCase()) 
+  //     const includes = 
+  //     mItem.name.toLowerCase().includes(value.toLowerCase()) 
+  //     if (startsWith) {
+  //       return startsWith;
+  //     } else if (!startsWith && includes) {
+  //       return includes;
+  //     } else return null;
+  //   })
+  // })
+  // setFilteredData(upData);
+  // setSearchValue(value);
+  const genExtra = () => (
+    <PlusOutlined
+      onClick={(event) => {
+        // If you don't want click extra trigger collapse, you can prevent this:
+        event.stopPropagation();
+      }}
+    />
+  );
   return (
     <div style={{ marginLeft: "15px" }}>
       <Row gutter={[16, 16]}>
@@ -205,35 +221,18 @@ const SelfStudyCourse = () => {
             <CardHeader className="cardHeaderCustom">
               <div>
                 <CardTitle tag="h4">Course Units</CardTitle>
+              
               </div>
               <Input
-                className="dataTable-filter mb-50"
-                type="text"
-                bsSize="sm"
-                id="search-input"
-                value={searchValue}
-                onChange={handleFilter}
-                style={{ outline: "none" }}
-              />
+                  className="dataTable-filter mb-50"
+                  type="text"
+                  bsSize="sm"
+                  id="search-input"
+                  value={searchValue}
+                  onChange={handleFilter}
+                  style={{outline:"none"}}
+                />
             </CardHeader>
-
-            {searchValue.length ? (
-              <>
-                {filteredData.map((item) => (
-                  <CardBody key={item.key} className="p-0" style={{ padding: "0 !important" }}>
-                    <ul>
-                       <li >{item.name}</li>
-                    </ul>
-                   
-                  </CardBody>
-                ))}
-              </>
-            ) : (
-              <>
-                <span></span>
-              </>
-            )}
-
             <CardBody className="p-0" style={{ padding: "0 !important" }}>
               <Sider
                 style={{ width: "100% !important" }}
@@ -245,22 +244,47 @@ const SelfStudyCourse = () => {
                   defaultOpenKeys={["sub1"]}
                   style={{ height: "100%", borderRight: 0 }}
                 >
-                  {subMenu.map((item) => (
-                    <SubMenu
-                      key={item.key}
-                      title={item.title}
-                      className="course-unit-list-title"
-                    >
-                      {item.menuItem.map((itm) => (
-                        <Menu.Item
-                          key={itm.key}
-                          className={videoWatched ? "text-green" : ""}
+                  {/* data={searchValue.length ? filteredData : data} */}
+                  {searchValue.length ? (
+                    <>
+                    {filteredData.map((item) => (
+                        <SubMenu
+                          key={item.key}
+                          title={item.title}
+                          className="course-unit-list-title"
                         >
-                          {itm.name}
-                        </Menu.Item>
+                          {item.menuItem.map((itm) => (
+                            <Menu.Item
+                              key={itm.key}
+                              className={videoWatched ? "text-green" : ""}
+                            >
+                              {itm.name}
+                            </Menu.Item>
+                          ))}
+                        </SubMenu>
                       ))}
-                    </SubMenu>
-                  ))}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      {subMenu.map((item) => (
+                        <SubMenu
+                          key={item.key}
+                          title={item.title}
+                          className="course-unit-list-title"
+                        >
+                          {item.menuItem.map((itm) => (
+                            <Menu.Item
+                              key={itm.key}
+                              className={videoWatched ? "text-green" : ""}
+                            >
+                              {itm.name}
+                            </Menu.Item>
+                          ))}
+                        </SubMenu>
+                      ))}
+                    </>
+                  )}
                 </Menu>
               </Sider>
             </CardBody>
