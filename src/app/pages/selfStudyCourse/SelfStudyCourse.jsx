@@ -3,10 +3,20 @@ import VideoPlayer from "react-video-js-player";
 import { Row, Col } from "antd";
 import "antd/dist/antd.min.css";
 import { Collapse } from "antd";
-import { Card, CardBody,  CardTitle, CardHeader } from "reactstrap";
+import { Card, CardBody, CardTitle, CardHeader } from "reactstrap";
 import { PlusOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import "./selfStudyCourse.css";
+
+import { Layout, Menu } from "antd";
+import {
+  UserOutlined,
+  LaptopOutlined,
+  NotificationOutlined,
+} from "@ant-design/icons";
+
+const { SubMenu } = Menu;
+const { Sider } = Layout;
 const { TabPane } = Tabs;
 
 function callback(key) {
@@ -71,7 +81,7 @@ const SelfStudyCourse = () => {
   // };
   const genExtra = () => (
     <PlusOutlined
-      onClick={event => {
+      onClick={(event) => {
         // If you don't want click extra trigger collapse, you can prevent this:
         event.stopPropagation();
       }}
@@ -90,7 +100,7 @@ const SelfStudyCourse = () => {
               poster={state.video.poster}
               width="720"
               height="420"
-              hideControls={['playbackrates']}
+              hideControls={["playbackrates"]}
               onReady={onPlayerReady}
               // onPlay={onVideoPlay}
               // onPause={onVideoPause}
@@ -104,7 +114,7 @@ const SelfStudyCourse = () => {
         <Col xs={24} md={24} lg={8}>
           <Card
             className="card-course-content no-shadow"
-            style={{ height: "420px", overflowY: "auto",marginBottom:"0" }}
+            style={{ height: "420px", overflowY: "auto", marginBottom: "0" }}
           >
             <CardHeader className="cardHeaderCustom">
               <div>
@@ -112,164 +122,75 @@ const SelfStudyCourse = () => {
               </div>
             </CardHeader>
             <CardBody className="p-0" style={{ padding: "0 !important" }}>
-              <Collapse bordered={false}>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="INTRODUCTION"
-                  key="1"
-                  // extra={genExtra()}
+              <Sider
+                style={{ width: "100% !important" }}
+                className="site-layout-background w-100"
+              >
+                <Menu
+                  mode="inline"
+                  defaultSelectedKeys={["1"]}
+                  defaultOpenKeys={["sub1"]}
+                  style={{ height: "100%", borderRight: 0 }}
                 >
-                  <ul className="course-unit-list">
-                    <li
+                  <SubMenu
+                    key="sub1"
+                    title="COURSE START"
+                    className="course-unit-list-title"
+                  >
+                    <Menu.Item
+                      key="1"
                       className={
                         videoWatched
-                          ? "course-unit-list-sub-unit-title text-green"
-                          : "course-unit-list-sub-unit-title"
+                          ? "text-green"
+                          : ""
                       }
                     >
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="SAFETY MANAGEMENT SYSTEM"
-                  key="2"
-                  // extra={genExtra()}
-                >
-                  <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY "
-                  key="3"
-                  // extra={genExtra()}
-                >
-                  <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="SAFETYPOLICY AND OBJECTIVES - MANAGEMENT COMMITMENT AND RESPONSIBILITY "
-                  key="4"
-                  // extra={genExtra()}
-                >
-                  <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="SAFETY RISK MANAGEMENT - HAZARD IDENTIFICATION - HAZARD IDENTIFICATION METHODS"
-                  key="5"
-                  // extra={genExtra()}
-                >
-                  <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-                <Panel
-                  className="course-unit-list-title"
-                  showArrow={false}
-                  header="THE SAFETY PROMOTION "
-                  key="6"
-                  // extra={genExtra()}
-                >
-                  <ul className="course-unit-list">
-                    <li className="course-unit-list-sub-unit-title">
-                      What is Safety Management System (Sms)
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Sms is Focus On
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Key /Main Phase Of Sms
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      Safety Goals and Safety Manual
-                    </li>
-                    <li className="course-unit-list-sub-unit-title">
-                      What is The Benefits Of Sms
-                    </li>
-                  </ul>
-                </Panel>
-              </Collapse>
+                      option1
+                    </Menu.Item>
+                    <Menu.Item key="2">option2</Menu.Item>
+                  </SubMenu>
+                  <SubMenu
+                    key="sub2"
+                    title="INTRODUCTION"
+                    className="course-unit-list-title"
+                  >
+                    <Menu.Item key="5">option5</Menu.Item>
+                    <Menu.Item key="6">option6</Menu.Item>
+                    <Menu.Item key="7">option7</Menu.Item>
+                    <Menu.Item key="8">option8</Menu.Item>
+                  </SubMenu>
+                  <SubMenu
+                    key="sub3"
+                    title="SAFETY MANAGEMENT SYSTEM"
+                    className="course-unit-list-title"
+                  >
+                    <Menu.Item key="9">option9</Menu.Item>
+                    <Menu.Item key="10">option10</Menu.Item>
+                    <Menu.Item key="11">option11</Menu.Item>
+                    <Menu.Item key="12">option12</Menu.Item>
+                  </SubMenu>
+                  <SubMenu
+                    key="sub4"
+                    title="SAFETY ASSURANCE - SAFETY PERFORMANCE MONITORING AND MEASUREMENT"
+                    className="course-unit-list-title"
+                  >
+                    <Menu.Item key="13">option9</Menu.Item>
+                    <Menu.Item key="14">option10</Menu.Item>
+                    <Menu.Item key="15">option11</Menu.Item>
+                    <Menu.Item key="16">option12</Menu.Item>
+                  </SubMenu>
+                  <SubMenu
+                    key="sub5"
+                    title="THE SAFETY PROMOTION"
+                    className="course-unit-list-title"
+                  >
+                    <Menu.Item key="17">option9</Menu.Item>
+                    <Menu.Item key="18">option10</Menu.Item>
+                    <Menu.Item key="19">option11</Menu.Item>
+                    <Menu.Item key="20">option12</Menu.Item>
+                  </SubMenu>
+                </Menu>
+              </Sider>
             </CardBody>
           </Card>
         </Col>

@@ -26,19 +26,6 @@ const ExamResult = ({ state }) => {
             </tr>
           </tbody>
         </table>
-        {/* <Button
-              onClick={() => {
-                setState({
-                  booleanonsubmit: false,
-                  activeStep: 0,
-                  Quiz_Set1: Quiz_Set1,
-                  Total: 0,
-                });
-              }}
-            >
-              {" "}
-              <Replay /> Try again{" "}
-            </Button> */}
       </div>
     </Card>
   );

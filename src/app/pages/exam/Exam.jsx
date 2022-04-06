@@ -9,7 +9,7 @@ import { Row, Col } from "antd";
 // import alertify from "alertifyjs";
 import "./exam.css";
 import ExamHeader from "./ExamHeader";
-import ExamResult from "./ExamResult";
+import ExamResult from "./ExamResultTable";
 import UserAnswer from "./UserAnswer";
 const Exam = () => {
   const [Quiz_Set1, setQuiz] = useState([
@@ -80,16 +80,6 @@ const Exam = () => {
   const [userAnswers, setUserAnswers] = useState([]);
   // console.log(userAnswers);
 
-  //  const getQuizOptionLength=()=>{
-  //   let list = Quiz_Set1;
-  //   let quizOptionLength=0;
-  //   list.forEach(() => {
-  //     quizOptionLength = quizOptionLength + 1;
-  //   });
-  //   setState({
-  //     quizOptionLength:quizOptionLength,
-  //   });
-  //  }
   const handleNext = useCallback(() => {
     setState({ activeStep: state.activeStep + 1 });
   }, [state]);
@@ -129,7 +119,6 @@ const Exam = () => {
   );
 
   const onsubmit = () => {
-    //   console.log(state.Quiz_Set)
     let list = Quiz_Set1;
     let correct = 0; //count evvelki adi
     let notattempcount = 0;
@@ -147,12 +136,6 @@ const Exam = () => {
             //   console.log("===>",anslist.que_options,item.ans)
             correct = correct + 1;
           }
-          // if (anslist.selected === anslist.isTrueAnswer) {
-          //   console.log("cavab dogrudu");
-          //   // correct = correct + 1;
-          // } else {
-          //   console.log("cavab sevhdi");
-          // }
         } else {
           notattempcount = notattempcount + 1;
         }
@@ -160,9 +143,6 @@ const Exam = () => {
     });
 
     //-------------------------------------------------------------------------------------------------------------------
-    //noteattempt ummi optionlarin sayidi. asagidaki kodun yerine bele bir sey yazmaliyam. 8*3=24 , 24-8=16
-    // eger optionlarin icindeki selectlerdenbiri true deyilse onda bu islesin. noteAttamp lazim deyil.
-    // notattempcount <= Quiz_Set1.length*3 && notattempcount > Quiz_Set1.length*3-Quiz_Set1.length ------- asagidaki if sertinin icinde evvel bunu yazmisdim
     if (selectedLength !== Quiz_Set1.length) {
       // console.log(notattempcount);
       setState({
@@ -233,17 +213,6 @@ const Exam = () => {
           <ExamResult state={state} />
         ) : (
           <div className="Quiz_container_display">
-            {/* Link button onclick open pdf file in new tab react */}
-            {/* -----------------------------------------------------------display pdf in window new tab */}
-            {/* <a href="post(4).pdf" target="_blank" rel="noreferrer"> // rel="noreferrer noopener"
-        open pdf
-      </a> */}
-            {/* <embed
-              src="post(4).pdf" //Economic-concepts-explained.pdf
-              width="500"
-              height="375"
-              type="application/pdf"
-            ></embed> */}
             {Quiz_Set1 &&
               Quiz_Set1.map((item, index) => {
                 if (Math.abs(state.activeStep - index) <= 0) {
@@ -358,7 +327,9 @@ const Exam = () => {
                         id={index}
                         type="button"
                         className={
-                         item.options.find(x=>x.selected===true)?"btn-outline-primary":"btn-outline-secondary"
+                          item.options.find((x) => x.selected === true)
+                            ? "btn-outline-primary"
+                            : "btn-outline-secondary"
                           // item.options[0].selected !== true &&
                           // item.options[1].selected !== true &&
                           // item.options[2].selected !== true
