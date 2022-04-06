@@ -76,9 +76,7 @@ const Exam = () => {
     catchmsg: "",
     errormsg: "",
   });
-  // console.log(Quiz_Set1[1].options.length)
   const [userAnswers, setUserAnswers] = useState([]);
-  // console.log(userAnswers);
 
   const handleNext = useCallback(() => {
     setState({ activeStep: state.activeStep + 1 });

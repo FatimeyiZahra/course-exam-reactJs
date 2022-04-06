@@ -7,13 +7,8 @@ import { Card, CardBody, CardTitle, CardHeader } from "reactstrap";
 import { PlusOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import "./selfStudyCourse.css";
-
+import { Input } from "reactstrap";
 import { Layout, Menu } from "antd";
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-} from "@ant-design/icons";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -36,11 +31,81 @@ const SelfStudyCourse = () => {
   const [videoSeeked, setVideoSeeked] = useState(false);
   const [videoEnd, setVideoEnd] = useState();
   const [videoWatched, setVideoWatched] = useState();
-
-  // console.log(videoSeeked);
-
-  // console.log(videoEnd);
-
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+  const [subMenu, setsubMenu] = useState([
+    {
+      key: "sub1",
+      title: "COURSE START",
+      menuItem: [
+        {
+          key: "1",
+          name: "Slider1",
+        },
+        {
+          key: "2",
+          name: "option2",
+        },
+      ],
+    },
+    {
+      key: "sub2",
+      title: "INTRODUCTION",
+      menuItem: [
+        {
+          key: "3",
+          name: "option1",
+        },
+        {
+          key: "4",
+          name: "option2",
+        },
+      ],
+    },
+    {
+      key: "sub3",
+      title: "SAFETY MANAGEMENT SYSTEM",
+      menuItem: [
+        {
+          key: "5",
+          name: "option1",
+        },
+        {
+          key: "6",
+          name: "option2",
+        },
+      ],
+    },
+    {
+      key: "sub4",
+      title: "SAFETY ASSURANCE - SAFETY PERFORMANCE MONITORING AND MEASUREMENT",
+      menuItem: [
+        {
+          key: "7",
+          name: "option1",
+        },
+        {
+          key: "8",
+          name: "option2",
+        },
+      ],
+    },
+    {
+      key: "sub5",
+      title: "THE SAFETY PROMOTION",
+      menuItem: [
+        {
+          key: "9",
+          name: "option1",
+        },
+        {
+          key: "10",
+          name: "option2",
+        },
+      ],
+    },
+  ]);
+  console.log(filteredData);
   const onVideoSeeking = (duration) => {
     setVideoSeeked(true);
     // console.log("Video seeking: ", duration);
@@ -79,6 +144,43 @@ const SelfStudyCourse = () => {
   //   setVideoSeeked(true);
   //   console.log(`Video seeked from ${from} to ${to}`);
   // };
+
+  const handleFilter = (e) => {
+    const value = e.target.value;
+    let updatedData = [];
+    setSearchValue(value);
+    if (value.length) {
+      updatedData = subMenu.filter((item) => {
+        const startsWith = 
+        item.title.toLowerCase().startsWith(value.toLowerCase()) 
+        const includes = 
+        item.title.toLowerCase().includes(value.toLowerCase()) 
+
+        if (startsWith) {
+          return startsWith;
+        } else if (!startsWith && includes) {
+          return includes;
+        } else return null;
+      });
+      setFilteredData(updatedData);
+      setSearchValue(value);
+    }
+  };
+  // upData=subMenu.map((men)=>{
+  //   men.menuItem.filter((mItem)=>{
+  //     const startsWith = 
+  //     mItem.name.toLowerCase().startsWith(value.toLowerCase()) 
+  //     const includes = 
+  //     mItem.name.toLowerCase().includes(value.toLowerCase()) 
+  //     if (startsWith) {
+  //       return startsWith;
+  //     } else if (!startsWith && includes) {
+  //       return includes;
+  //     } else return null;
+  //   })
+  // })
+  // setFilteredData(upData);
+  // setSearchValue(value);
   const genExtra = () => (
     <PlusOutlined
       onClick={(event) => {
@@ -119,7 +221,17 @@ const SelfStudyCourse = () => {
             <CardHeader className="cardHeaderCustom">
               <div>
                 <CardTitle tag="h4">Course Units</CardTitle>
+              
               </div>
+              <Input
+                  className="dataTable-filter mb-50"
+                  type="text"
+                  bsSize="sm"
+                  id="search-input"
+                  value={searchValue}
+                  onChange={handleFilter}
+                  style={{outline:"none"}}
+                />
             </CardHeader>
             <CardBody className="p-0" style={{ padding: "0 !important" }}>
               <Sider
@@ -132,63 +244,47 @@ const SelfStudyCourse = () => {
                   defaultOpenKeys={["sub1"]}
                   style={{ height: "100%", borderRight: 0 }}
                 >
-                  <SubMenu
-                    key="sub1"
-                    title="COURSE START"
-                    className="course-unit-list-title"
-                  >
-                    <Menu.Item
-                      key="1"
-                      className={
-                        videoWatched
-                          ? "text-green"
-                          : ""
-                      }
-                    >
-                      option1
-                    </Menu.Item>
-                    <Menu.Item key="2">option2</Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub2"
-                    title="INTRODUCTION"
-                    className="course-unit-list-title"
-                  >
-                    <Menu.Item key="5">option5</Menu.Item>
-                    <Menu.Item key="6">option6</Menu.Item>
-                    <Menu.Item key="7">option7</Menu.Item>
-                    <Menu.Item key="8">option8</Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub3"
-                    title="SAFETY MANAGEMENT SYSTEM"
-                    className="course-unit-list-title"
-                  >
-                    <Menu.Item key="9">option9</Menu.Item>
-                    <Menu.Item key="10">option10</Menu.Item>
-                    <Menu.Item key="11">option11</Menu.Item>
-                    <Menu.Item key="12">option12</Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub4"
-                    title="SAFETY ASSURANCE - SAFETY PERFORMANCE MONITORING AND MEASUREMENT"
-                    className="course-unit-list-title"
-                  >
-                    <Menu.Item key="13">option9</Menu.Item>
-                    <Menu.Item key="14">option10</Menu.Item>
-                    <Menu.Item key="15">option11</Menu.Item>
-                    <Menu.Item key="16">option12</Menu.Item>
-                  </SubMenu>
-                  <SubMenu
-                    key="sub5"
-                    title="THE SAFETY PROMOTION"
-                    className="course-unit-list-title"
-                  >
-                    <Menu.Item key="17">option9</Menu.Item>
-                    <Menu.Item key="18">option10</Menu.Item>
-                    <Menu.Item key="19">option11</Menu.Item>
-                    <Menu.Item key="20">option12</Menu.Item>
-                  </SubMenu>
+                  {/* data={searchValue.length ? filteredData : data} */}
+                  {searchValue.length ? (
+                    <>
+                    {filteredData.map((item) => (
+                        <SubMenu
+                          key={item.key}
+                          title={item.title}
+                          className="course-unit-list-title"
+                        >
+                          {item.menuItem.map((itm) => (
+                            <Menu.Item
+                              key={itm.key}
+                              className={videoWatched ? "text-green" : ""}
+                            >
+                              {itm.name}
+                            </Menu.Item>
+                          ))}
+                        </SubMenu>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      {subMenu.map((item) => (
+                        <SubMenu
+                          key={item.key}
+                          title={item.title}
+                          className="course-unit-list-title"
+                        >
+                          {item.menuItem.map((itm) => (
+                            <Menu.Item
+                              key={itm.key}
+                              className={videoWatched ? "text-green" : ""}
+                            >
+                              {itm.name}
+                            </Menu.Item>
+                          ))}
+                        </SubMenu>
+                      ))}
+                    </>
+                  )}
                 </Menu>
               </Sider>
             </CardBody>
