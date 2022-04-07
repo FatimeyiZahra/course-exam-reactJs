@@ -106,3 +106,56 @@
 .ant-menu-inline .ant-menu-selected:after {
   opacity: 0 !important;
 }
+.course-searchbox {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+.course-searchbox input {
+  /* font-family: "Montserrat", sans-serif; */
+  padding: 0.571rem 1rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
+  font-weight: 400;
+  width: 100%;
+  color: #6e6b7b;
+  display: block;
+  outline: "none";
+}
+.course-searchbox input::placeholder {
+  letter-spacing: 1px;
+  color: #bccbde;
+}
+.search-result {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 90;
+  top: 29%;
+  left: 0;
+  right: 0;
+  font: 14px Arial;
+  height: 400px;
+  /* overflow: auto; */
+  /* overflow-y: auto; */
+  background-color: #fff;
+
+}
+.search-result .unit-tree-list{
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow-x: scroll;
+}
+.search-result .unit-tree-list li{
+  padding: 0.5rem 0 !important;
+  color: #4098c8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  list-style: none;
+}

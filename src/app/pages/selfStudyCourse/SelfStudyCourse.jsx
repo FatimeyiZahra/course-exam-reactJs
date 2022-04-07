@@ -6,7 +6,6 @@ import { Collapse } from "antd";
 import { Card, CardBody, CardTitle, CardHeader } from "reactstrap";
 import { Tabs } from "antd";
 import "./selfStudyCourse.css";
-import { Input } from "reactstrap";
 import { Layout, Menu } from "antd";
 
 const { SubMenu } = Menu;
@@ -44,7 +43,7 @@ const SelfStudyCourse = () => {
         },
         {
           key: "2",
-          name: "option2",
+          name: "What is Safety Management System (Sms)",
         },
       ],
     },
@@ -54,11 +53,11 @@ const SelfStudyCourse = () => {
       menuItem: [
         {
           key: "3",
-          name: "option1",
+          name: "Safety Goals and Safety Manual",
         },
         {
           key: "4",
-          name: "option2",
+          name: "What is The Benefits Of Sms",
         },
       ],
     },
@@ -68,11 +67,11 @@ const SelfStudyCourse = () => {
       menuItem: [
         {
           key: "5",
-          name: "option1",
+          name: "What s The Difference Between Sms and Qms",
         },
         {
           key: "6",
-          name: "option2",
+          name: "Safety Management Strategies",
         },
       ],
     },
@@ -82,35 +81,31 @@ const SelfStudyCourse = () => {
       menuItem: [
         {
           key: "7",
-          name: "option1",
+          name: "The Employee Role",
         },
         {
           key: "8",
-          name: "option2",
-        },
-      ],
-    },
-    {
-      key: "sub5",
-      title: "THE SAFETY PROMOTION",
-      menuItem: [
-        {
-          key: "9",
-          name: "option1",
-        },
-        {
-          key: "10",
-          name: "option2",
+          name: "Sms Documentation",
         },
       ],
     },
   ]);
-  console.log(filteredData);
+  // console.log(filteredData);
   const onVideoSeeking = (duration) => {
     setVideoSeeked(true);
     // console.log("Video seeking: ", duration);
   };
-
+  useEffect(() => {
+    setMenuItems([]);
+    subMenu.map((men) =>
+      men.menuItem.map((as) =>
+        setMenuItems((prevState) => [
+          ...prevState,
+          { subMenuKey: men.key, MenuItemkey: as.key, name: as.name },
+        ])
+      )
+    );
+  }, []);
   useEffect(() => {
     if (videoSeeked === true) {
       setVideoWatched(false);
@@ -119,14 +114,6 @@ const SelfStudyCourse = () => {
     if (videoSeeked === false && videoEnd === true) {
       setVideoWatched(true);
     }
-    subMenu.map((men) => {
-      men.menuItem.map((as) => {
-        setMenuItems((prevState) => [
-          ...prevState,
-          { key: as.key, name: as.name },
-        ]);
-      });
-    });
   }, [videoEnd]);
   const onVideoEnd = () => {
     setVideoEnd(true);
@@ -159,8 +146,9 @@ const SelfStudyCourse = () => {
     setSearchValue(value);
     if (value.length) {
       upData = items.filter((men) => {
-        const startsWith = men.name.toLowerCase().startsWith(value.toLowerCase());
-
+        const startsWith = men.name
+          .toLowerCase()
+          .startsWith(value.toLowerCase());
         const includes = men.name.toLowerCase().includes(value.toLowerCase());
         if (startsWith) {
           return startsWith;
@@ -170,9 +158,14 @@ const SelfStudyCourse = () => {
       });
       setFilteredData(upData);
       setSearchValue(value);
+    } else {
+      setFilteredData([]);
+      return null;
     }
   };
-  
+  const clickedResult = (e) => {
+    console.log(e.target.id);
+  };
   return (
     <div style={{ marginLeft: "15px" }}>
       <Row gutter={[16, 16]}>
@@ -206,27 +199,39 @@ const SelfStudyCourse = () => {
               <div>
                 <CardTitle tag="h4">Course Units</CardTitle>
               </div>
-              <Input
+            </CardHeader>
+            <div className="course-searchbox">
+              <input
                 className="dataTable-filter mb-50"
                 type="text"
-                bsSize="sm"
                 id="search-input"
+                placeholder="Search terms in the course"
+                autoComplete="off"
                 value={searchValue}
                 onChange={handleFilter}
-                style={{ outline: "none" }}
+                style={{ outline: "none", display: "block" }}
               />
-            </CardHeader>
-
+            </div>
             {searchValue.length ? (
               <>
-                {filteredData.map((item) => (
-                  <CardBody key={item.key} className="p-0" style={{ padding: "0 !important" }}>
-                    <ul>
-                       <li >{item.name}</li>
-                    </ul>
-                   
-                  </CardBody>
-                ))}
+                <CardBody
+                  className="p-0 search-result"
+                  style={{ padding: "0 !important" }}
+                >
+                  <ul className="unit-tree-list">
+                    {filteredData.map((item, index) => (
+                      <li
+                        key={item.MenuItemkey}
+                        id={item.subMenuKey}
+                        // name={item.MenuItemkey}
+                        onClick={clickedResult}
+                      >
+                        {" "}
+                        {item.name}
+                      </li>
+                    ))}
+                  </ul>
+                </CardBody>
               </>
             ) : (
               <>
@@ -241,8 +246,8 @@ const SelfStudyCourse = () => {
               >
                 <Menu
                   mode="inline"
-                  defaultSelectedKeys={["1"]}
-                  defaultOpenKeys={["sub1"]}
+                  // defaultSelectedKeys={["1"]}
+                  // defaultOpenKeys={["sub1"]}
                   style={{ height: "100%", borderRight: 0 }}
                 >
                   {subMenu.map((item) => (
