@@ -31,7 +31,7 @@ const SelfStudyCourse = () => {
   const [videoWatched, setVideoWatched] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [items, setMenuItems] = useState([]);
+  const [menuitems, setMenuItems] = useState([]);
   const [subMenu, setsubMenu] = useState([
     {
       key: "sub1",
@@ -106,6 +106,12 @@ const SelfStudyCourse = () => {
       )
     );
   }, []);
+
+  // const ssds = subMenu.map((men) =>
+  //   men.menuItem.map((as) => {
+  //     return { subMenuKey: men.key, MenuItemkey: as.key, name: as.name };
+  //   })
+  // );
   useEffect(() => {
     if (videoSeeked === true) {
       setVideoWatched(false);
@@ -145,7 +151,7 @@ const SelfStudyCourse = () => {
     let upData = [];
     setSearchValue(value);
     if (value.length) {
-      upData = items.filter((men) => {
+      upData = menuitems.filter((men) => {
         const startsWith = men.name
           .toLowerCase()
           .startsWith(value.toLowerCase());
