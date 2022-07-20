@@ -82,7 +82,7 @@ const UserDropdown = () => {
           onClick={(e) => e.preventDefault()}
         >
           <span className="user-name fw-bolder mr-10">
-            {(userData && userData["username"]) || "John Doe"}
+            {(userData && userData["username"]) || "Kataraban"}
           </span>
           {/* <span className="user-status">
             {(userData && userData.role) || "Admin"}

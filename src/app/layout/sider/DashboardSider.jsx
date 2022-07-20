@@ -5,7 +5,7 @@ import { changeCollapsed, changeMenuOpen } from "../../../redux/actions/navbar";
 import { CloseOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import SideBarMenuItem from "../menuItem/SideBarMenuItem";
-import logo from "../../../assets/image/logo/logo.svg";
+import logoK from "../../../assets/image/logo/logoK.png";
 
 const { Sider } = Layout;
 
@@ -55,7 +55,7 @@ const DashboardSider = () => {
           <li className="nav-item me-auto">
             <Link to="/home">
               <div className="logo">
-                <img src={logo} alt="" />
+                <img src={logoK} alt="" />
               </div>
             </Link>
           </li>

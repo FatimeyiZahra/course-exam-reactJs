@@ -11,11 +11,11 @@ const Information = () => {
           <tbody className="list font-size-sm table-body">
             <tr>
               <th style={{ width: "191px", border: "none" }}>FIRST NAME</th>
-              <td>Stanislav</td>
+              <td>Kataraban</td>
             </tr>
             <tr>
               <th>LAST NAME</th>
-              <td>Karimov</td>
+              <td>Sharifova</td>
             </tr>
             <tr>
               <th>AIRCRAFT TYPE</th>
@@ -27,7 +27,7 @@ const Information = () => {
             </tr>
             <tr>
               <th>EMAIL </th>
-              <td>stanislav.karimov@silkwayltd.com</td>
+              <td>fake@email.useless</td>
             </tr>
             <tr>
               <th>MOBILE </th>

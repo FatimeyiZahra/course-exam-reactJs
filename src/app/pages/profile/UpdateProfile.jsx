@@ -14,7 +14,7 @@ import {
 
 const { TextArea } = Input;
 const UpdateProfile = () => {
-  const [name, setName] = useState("Stanislav");
+  const [name, setName] = useState("Kataraban");
   const data = { avatar: "" };
   const [avatar, setAvatar] = useState(data.avatar ? data.avatar : UserAvatar);
   // console.log(avatar);
@@ -156,7 +156,7 @@ const UpdateProfile = () => {
             <Col span={12} xs={24} sm={24} md={24} lg={24} className="mb-1">
               <label className="form-label form-label">About</label>
               <TextArea
-                defaultValue="hi, please write short information about you"
+                defaultValue="hi, im developer with 2 years experience. Working with ReactJs and C#"
                 placeholder="Controlled autosize"
                 autoSize={{ minRows: 3, maxRows: 5 }}
               />
