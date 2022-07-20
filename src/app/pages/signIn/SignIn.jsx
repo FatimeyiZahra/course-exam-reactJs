@@ -20,6 +20,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useHistory } from "react-router-dom";
 function Copyright(props) {
   return (
     <Typography
@@ -43,6 +44,8 @@ const theme = createTheme();
 export default function SignIn() {
   const emailRef = useRef();
   const PasswordRef = useRef();
+  const history = useHistory();
+  
   const [emailCheck, setEmailCheck] = useState({
     helperText: "",
     error: false,
@@ -85,9 +88,10 @@ export default function SignIn() {
       password: PasswordRef.current.value,
     };
     if (emailRef.current.value !== "" && PasswordRef.current.value !== "") {
-      console.log(loginData);
+      history.push("/home");
+      // console.log(loginData);
     } else {
-      console.log("xeta var");
+      // console.log("xeta var");
     }
   };
 
@@ -102,7 +106,7 @@ export default function SignIn() {
           md={8}
           sx={{
             //   'url(https://source.unsplash.com/random)'
-            backgroundImage: 'url('+ signInFoto+')',
+            backgroundImage: "url(" + signInFoto + ")",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -155,6 +159,7 @@ export default function SignIn() {
                 label="Email Address"
                 name="email"
                 autoComplete="off"
+                defaultValue="admin"
                 autoFocus
                 error={emailCheck.error}
                 inputRef={emailRef}
@@ -184,6 +189,7 @@ export default function SignIn() {
                     </InputAdornment>
                   }
                   label="Password"
+                  defaultValue="admin123"
                   inputRef={PasswordRef}
                   error={passwordCheck.error}
                   helpertext={passwordCheck.helperText}
@@ -207,11 +213,10 @@ export default function SignIn() {
                 // autoComplete="current-password"
                 helperText={passwordCheck.helperText}
               /> */}
-
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              />{" "}
               <Button
                 type="submit"
                 fullWidth
@@ -227,7 +232,7 @@ export default function SignIn() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/home" variant="body2">
+                  <Link href="#" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
