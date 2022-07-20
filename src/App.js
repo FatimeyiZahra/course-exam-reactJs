@@ -12,6 +12,10 @@ import Information from "./app/pages/profile/Information";
 import UpdateProfile from "./app/pages/profile/UpdateProfile";
 import Exam from "./app/pages/exam/Exam";
 import SelfStudyCourse from "./app/pages/selfStudyCourse/SelfStudyCourse";
+import Certificate from "./app/pages/certificate/Certificate";
+import Installation from "./app/pages/documentation/Installation";
+import Dependencies from "./app/pages/documentation/Dependencies";
+import Usage from "./app/pages/documentation/Usage";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 //  import 'bootstrap-css-only/css/bootstrap.min.css';
 //   import 'mdbreact/dist/css/mdb.css';
@@ -38,6 +42,18 @@ function App() {
           </Route>
           <Route exact path="/exam">
             <Exam />
+          </Route>
+          <Route exact path="/certificates">
+            <Certificate/>
+          </Route>
+          <Route exact path="/installation">
+            <Installation />
+          </Route>
+          <Route exact path="/dependencies">
+            <Dependencies />
+          </Route>
+          <Route exact path="/usage">
+            <Usage />
           </Route>
           <Route>
             <Route exact path={"/user-information"}>

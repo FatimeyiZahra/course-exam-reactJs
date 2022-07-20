@@ -38,24 +38,24 @@ const UserDropdown = () => {
         borderRadius: ".375rem",
       }}
     >
-      <Menu.Item
+      {/* <Menu.Item
         key="0"
         style={{ padding: ".375rem 1.5rem", color: "#6e84a3" }}
       >
         <Link to={"./"}>Messages</Link>
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item
         key="1"
         style={{ padding: ".375rem 1.5rem", color: "#6e84a3" }}
       >
         <Link to={"/user-information"}>Account</Link>
       </Menu.Item>
-      <Menu.Item
+      {/* <Menu.Item
         key="2"
         style={{ padding: ".375rem 1.5rem", color: "#6e84a3" }}
       >
         <a href="https://www.aliyun.com">Password</a>
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item
         onClick={onChangeContactClick}
         key="3"

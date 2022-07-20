@@ -44,7 +44,7 @@ const ProfileHeader = () => {
             <img className="rounded img-fluid" src={UserAvatar} alt="Card" />
           </div>
           <div className="profile-title ms-3">
-            <h2 className="text-black">Stanislav Karimov</h2>
+            <h2 className="text-black">Kataraban Enter</h2>
             {/* <p className="text-white">Designer</p> */}
           </div>
         </div>
